@@ -1,0 +1,172 @@
+@import "./layout";
+@import "./resets";
+@import "./components";
+@import "./typography";
+@import "./themeToggler";
+@import "./variables";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.light {
+  --primary: #3863e5;
+  --primary-hover: #204ac5;
+  --primary-focus: #204ac5;
+  --primary-content: #03011d;
+
+  --secondary: #ededfa;
+  --secondary-hover: #fcfcfc;
+
+  --visited-color: #6f38e5;
+  --visited-color-hover: #5520c5;
+  --link-color: var(--primary);
+  --link-color-hover: var(--primary-hover);
+  --body-background: #fcfcfc;
+  --body-text: #292b33;
+  --body-text-invert: #ffffff;
+  --secondary-background: #005ef4;
+  --secondary-text: #fcfcfd;
+  --title-text: #2c2d30;
+  --text-lighter: #6f737c;
+  --footer-background: #ffffff;
+  --footer-text: #6c7288;
+  --table-top-background: var(--body-background);
+  --table-odd-background: var(--body-background);
+  --table-even-background: #f4f4f6;
+  --card-background: #fcfcfc;
+  --card-title: #0f0943;
+  --card-text: #767370;
+  --card-border: #eeeff1;
+  --cta-background: #0f0943;
+  --cta-text: var(--button-text);
+  --sidebar-color: var(--sidebar-text);
+  --sidebar-color-active: #2c2d30;
+  --tags-background: #e7e8ec;
+  --tags-color: #5a5f72;
+  --jumpto-border-color: #c6c9d2;
+  --search-tags-border: #c6c9d2;
+  --search-tags-activated: #dddfe4;
+  --button-background: #005ef4;
+  --button-background-hover: #0249bb;
+  --button-text: #fcfcfd;
+  --button-background-secondary: transparent;
+  --button-text-secondary: #2dbae6;
+  --sidebar-text: var(--primary);
+  --content-widget-text: #34363b;
+  --missing-something-background: #f8f8f8;
+  --missing-something-text: #000;
+
+  --notice-background: #f0f6fa;
+  --notice-color: #006bb3;
+  --warning-background: #faf4f0;
+  --warning-color: #d65800;
+  --bad-background: #f8f1f2;
+  --bad-color: #b00020;
+  --success-background: #f3f5f1;
+  --success-color: #008738;
+  --attnnote-background: #f0f6fa;
+  --attnnote-color: #006bb3;
+  --attnalert-background: #f8f1f2;
+  --attnalert-color: #b00020;
+  --attndeprecation-background: #292931;
+  --attndeprecation-color: #ffffff;
+  --attntip-background: #f3f5f1;
+  --attntip-color: #18924a;
+  --attninfo-background: #eeeff1;
+  --attninfo-color: #5a5f72;
+
+  --box-shadow: #dadbe5e0;
+  --search-input-background: #eeeff1;
+  --search-input-color: #292b33;
+  --hr: hsla(0, 0%, 0, 0.2);
+  --gradient: linear-gradient(90deg, #f9c1c1 0%, #f9caaf 50.01%, #f3e1af 100%);
+  --card-bg-background: linear-gradient(180deg,
+      rgba(41, 43, 51, 0.35) 0%,
+      rgba(41, 43, 51, 0.7) 100%);
+  --shadow-lp: 0px 1px 8px rgba(0, 0, 0, 0.05),
+    inset 0px -1px 0px rgba(167, 172, 190, 0.3);
+  --scroll-bg: #e7e8ec;
+  --faq-icon: #006bb2;
+}
+
+body.dark {
+  --primary: #5d80ea;
+  --primary-hover: #819cee;
+  --primary-focus: #819cee;
+  --primary-content: #2a79ff;
+
+  --secondary: #ededfa;
+  --secondary-hover: #fcfcfc;
+
+  --visited-color: #a381ee;
+  --visited-color-hover: #b296ee;
+
+  --link-color: var(--primary);
+  --link-color-hover: var(--primary-hover);
+  --body-background: #121316;
+  --body-text: #afb3c0;
+  --body-text-invert: #292b33;
+  --secondary-background: #005ef4;
+  --secondary-text: #fcfcfd;
+  --title-text: #afb3c0;
+  --text-lighter: #c5c7ce;
+  --footer-background: #ffffff;
+  --footer-text: #81899c;
+  --table-top-background: var(--body-background);
+  --table-odd-background: var(--body-background);
+  --table-even-background: #24262e;
+  --card-background: #121316;
+  --card-title: #f7f7f9;
+  --card-text: #a7acbe;
+  --card-border: #363944;
+  --cta-background: #005ef4;
+  --cta-text: var(--button-text);
+  --sidebar-color: #d6dae6;
+  --sidebar-color-active: #fcfcfd;
+  --tags-background: #363944;
+  --tags-color: #c6c9d2;
+  --jumpto-border-color: #c6c9d2;
+  --search-tags-border: #363944;
+  --search-tags-activated: #363944;
+  --button-background: #005ef4;
+  --button-background-hover: #091043;
+  --button-text: #fcfcfd;
+  --button-background-secondary: transparent;
+  --button-text-secondary: #2dbae6;
+  --sidebar-text: var(--primary);
+  --content-widget-text: #afb3c0;
+  --missing-something-background: var(--card-background);
+  --missing-something-color: #fff;
+
+  --notice-background: #101c25;
+  --notice-color: #429bd7;
+  --warning-background: #251a14;
+  --warning-color: #faa614;
+  --bad-background: #221117;
+  --bad-color: #ea405f;
+  --success-background: #101e1f;
+  --success-color: #3f9f66;
+  --attnnote-background: #101c25;
+  --attnnote-color: #429bd7;
+  --attnalert-background: #221117;
+  --attnalert-color: #ea405f;
+  --attndeprecation-background: #1c1d22;
+  --attndeprecation-color: #6c7288;
+  --attntip-background: #101e1f;
+  --attntip-color: #3f9f66;
+  --attninfo-background: #363944;
+  --attninfo-color: #d1d4db;
+
+  --box-shadow: #000000d6;
+  --search-input-color: #81899c;
+  --search-input-background: #24262e;
+  --hr: hsla(0, 0%, 100%, 0.2);
+  --gradient: linear-gradient(90deg, #113546 0%, #44132e 100%);
+  --card-bg-background: linear-gradient(0deg,
+      rgba(196, 199, 212, 0.7),
+      rgba(196, 199, 212, 0.7));
+  --shadow-lp: 0px 1px 8px rgba(0, 0, 0, 0.15), inset 0px -1px 0px #1f1f1f;
+  --scroll-bg: #24262e;
+  --faq-icon: #429bd7;
+}
