@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, Link, useStaticQuery, navigate } from "gatsby"
 import { Disclosure, Transition } from "@headlessui/react"
-
+import { useLocation } from "@reach/router"
 import { ArrowRight, LinkIcon } from "./icons/"
 
 const SidebarStyles = styled.div`
@@ -77,22 +77,11 @@ const SidebarStyles = styled.div`
   li.pagesfolder {
     padding-left: 1.5rem;
   }
-  li.sidebar_item:nth-last-child(7) {
-    padding-top: 1.5rem;
-  }
   li.sidebar_item:nth-last-child(5) {
     padding-top: 1.5rem;
-    .sidebar-arrow,
-    .inner-nav {
-      display: none;
-    }
   }
-  li.sidebar_item:nth-last-child(4) {
-    padding-bottom: 1.5rem;
-    .sidebar-arrow,
-    .inner-nav {
-      display: none;
-    }
+  li.sidebar_item:nth-last-child(3) {
+    padding-top: 1.5rem;
   }
 `
 
@@ -131,12 +120,14 @@ const Sidebar = ({ location, sidebarOpen, setSidebarOpen }) => {
     }
 
     fragment page on kontent_item {
-      ...KCMD
       ...BRN
+      ...BRM
       ...BWN
-      ...RN
-      ...WN
+      ...KCMD
       ...FQ
+      ...RN
+      ...RM
+      ...WN
     }
 
     fragment KCMD on kontent_item_knowledge_center_markdown_page {
@@ -153,7 +144,20 @@ const Sidebar = ({ location, sidebarOpen, setSidebarOpen }) => {
         type
       }
     }
-
+    fragment BRM on kontent_item_blog_roadmap {
+      elements {
+        pagename {
+          value
+        }
+        permalink {
+          value
+        }
+      }
+      system {
+        id
+        type
+      }
+    }
     fragment BRN on kontent_item_blog_release_notes {
       elements {
         pagename {
@@ -183,7 +187,20 @@ const Sidebar = ({ location, sidebarOpen, setSidebarOpen }) => {
         type
       }
     }
-
+    fragment RM on kontent_item_roadmap_pages {
+      elements {
+        pagename {
+          value
+        }
+        permalink {
+          value
+        }
+      }
+      system {
+        id
+        type
+      }
+    }
     fragment RN on kontent_item_release_notes_page {
       elements {
         pagename {
@@ -273,9 +290,6 @@ const Sidebar = ({ location, sidebarOpen, setSidebarOpen }) => {
     }
   `)
 
-  // console.log(
-  //   sidebarData.allKontentItemNavigationItem.nodes[0].elements.subitems
-  // )
   return (
     <SidebarStyles className="drawer-side">
       <div htmlFor="my-drawer-2" className="drawer-overlay" />
@@ -286,8 +300,8 @@ const Sidebar = ({ location, sidebarOpen, setSidebarOpen }) => {
       >
         <SidebarItems
           items={
-            sidebarData.allKontentItemNavigationItem.nodes[0].elements.subitems
-              .value
+            sidebarData.allKontentItemNavigationItem?.nodes[0]?.elements
+              .subitems.value
           }
           url=""
           level={0}
@@ -436,101 +450,124 @@ const SidebarItem = ({
   sidebarOpen,
   setSidebarOpen,
 }) => {
+  let loc = useLocation()
+  let noToggle = ["product-roadmap", "whats-new", "release-notes"]
   if (item.system.type === "navigation_item") {
     const folder = level === 0 ? "sidebar_item" : FOLDER_NAME[level]
     const newUrl =
       level > 0 ? `${item.elements.url.value}` : item.elements.url.value
 
     const isOpen = isActive({ elements: item.elements, location })
-
     return (
       <li className={folder}>
-        <Disclosure as="div" defaultOpen={isOpen}>
-          {({ open, close }) => (
-            <>
-              <InContextActiveComponent
-                open={open}
-                close={close}
-                isOpen={isOpen}
-                setSidebarOpen={setSidebarOpen}
-              />
-              <dt className="flex items-center">
-                <Disclosure.Button
-                  onDoubleClick={() => {
-                    navigate(`/${item.elements.url.value}`)
-                    setSidebarOpen(false)
-                  }}
-                >
-                  <div className="flex itemdetails canOpen relative items-start gap-2">
-                    {level === 0 ? (
-                      <div
-                        className={
-                          "sidebar-arrow w-4 h-4 mt-1.5 flex items-center flex-col justify-center transform transition " +
-                          `${open ? "rotate-90 text-sidebar-color-active" : ""}`
-                        }
-                      >
-                        <ArrowRight />
-                      </div>
-                    ) : level >= 1 ? (
-                      <div
-                        className={
-                          "sidebar-arrow w-4 h-4 mt-1.5 flex items-center flex-col justify-center transform transition " +
-                          `${open ? "rotate-90 text-sidebar-color-active" : ""}`
-                        }
-                      >
-                        <ArrowRight />
-                      </div>
-                    ) : null}
-
-                    {item.elements.url.value === "what-s-new" ||
-                    item.elements.url.value === "release-notes" ? (
-                      <Link
-                        to={`/${item.elements.subitems.value[0].elements.permalink.value}`}
-                        className={`nav-title  ${
-                          open ? "font-bold text-sidebar-color-active" : " "
-                        }
-                        `}
-                        onClick={() => setSidebarOpen(false)}
-                      >
-                        {item.elements.title?.value}
-                      </Link>
-                    ) : (
-                      <span
-                        className={`nav-title  ${open ? "font-bold " : " "}
-                        `}
-                      >
-                        {item.elements.title?.value}
-                      </span>
-                    )}
-                  </div>
-                </Disclosure.Button>
-              </dt>
-              <Transition
-                className="inner-nav"
-                show={open}
-                enter="transition duration-100 ease-out"
-                enterFrom="transform scale-95 opacity-0"
-                enterTo="transform scale-100 opacity-100"
-                leave="transition duration-75 ease-out"
-                leaveFrom="transform scale-100 opacity-100"
-                leaveTo="transform scale-95 opacity-0"
+        {noToggle.includes(item.elements.url.value) ? (
+          <dt className="flex items-center">
+            <div className="flex itemdetails canOpen relative items-start gap-2">
+              <Link
+                to={`/${item.elements.url.value}`}
+                className={`nav-title ${
+                  loc.pathname === `/${item.elements.url.value}`
+                    ? "font-bold text-sidebar-color-active"
+                    : " "
+                } `}
+                onClick={() => setSidebarOpen(false)}
               >
-                <Disclosure.Panel as="dd">
-                  <ul className="mt-3 text-link-color">
-                    <SidebarItems
-                      items={item.elements.subitems.value}
-                      url={newUrl}
-                      level={level + 1}
-                      location={location}
-                      sidebarOpen={sidebarOpen}
-                      setSidebarOpen={setSidebarOpen}
-                    />
-                  </ul>
-                </Disclosure.Panel>
-              </Transition>
-            </>
-          )}
-        </Disclosure>
+                {item.elements.title?.value}
+              </Link>
+            </div>{" "}
+          </dt>
+        ) : (
+          <Disclosure as="div" defaultOpen={isOpen}>
+            {({ open, close }) => (
+              <>
+                <InContextActiveComponent
+                  open={open}
+                  close={close}
+                  isOpen={isOpen}
+                  setSidebarOpen={setSidebarOpen}
+                />
+                <dt className="flex items-center">
+                  <Disclosure.Button
+                    onDoubleClick={() => {
+                      navigate(`/${item.elements.url.value}`)
+                      setSidebarOpen(false)
+                    }}
+                  >
+                    <div className="flex itemdetails canOpen relative items-start gap-2">
+                      {level === 0 ? (
+                        <div
+                          className={
+                            "sidebar-arrow w-4 h-4 mt-1.5 flex items-center flex-col justify-center transform transition " +
+                            `${
+                              open ? "rotate-90 text-sidebar-color-active" : ""
+                            }`
+                          }
+                        >
+                          <ArrowRight />
+                        </div>
+                      ) : level >= 1 ? (
+                        <div
+                          className={
+                            "sidebar-arrow w-4 h-4 mt-1.5 flex items-center flex-col justify-center transform transition " +
+                            `${
+                              open ? "rotate-90 text-sidebar-color-active" : ""
+                            }`
+                          }
+                        >
+                          <ArrowRight />
+                        </div>
+                      ) : null}
+
+                      {item.elements.url.value === "what-s-new" ||
+                      item.elements.url.value === "release-notes" ? (
+                        <Link
+                          to={`/${item.elements.subitems.value[0].elements.permalink.value}`}
+                          className={`nav-title  ${
+                            open ? "font-bold text-sidebar-color-active" : " "
+                          }
+                        `}
+                          onClick={() => setSidebarOpen(false)}
+                        >
+                          {item.elements.title?.value}
+                        </Link>
+                      ) : (
+                        <span
+                          className={`nav-title  ${open ? "font-bold " : " "}
+                        `}
+                        >
+                          {item.elements.title?.value}
+                        </span>
+                      )}
+                    </div>
+                  </Disclosure.Button>
+                </dt>
+                <Transition
+                  className="inner-nav"
+                  show={open}
+                  enter="transition duration-100 ease-out"
+                  enterFrom="transform scale-95 opacity-0"
+                  enterTo="transform scale-100 opacity-100"
+                  leave="transition duration-75 ease-out"
+                  leaveFrom="transform scale-100 opacity-100"
+                  leaveTo="transform scale-95 opacity-0"
+                >
+                  <Disclosure.Panel as="dd">
+                    <ul className="mt-3 text-link-color">
+                      <SidebarItems
+                        items={item.elements.subitems.value}
+                        url={newUrl}
+                        level={level + 1}
+                        location={location}
+                        sidebarOpen={sidebarOpen}
+                        setSidebarOpen={setSidebarOpen}
+                      />
+                    </ul>
+                  </Disclosure.Panel>
+                </Transition>
+              </>
+            )}
+          </Disclosure>
+        )}
       </li>
     )
   } else if (item.system.type === "blog_release_notes") {

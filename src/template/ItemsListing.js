@@ -47,7 +47,7 @@ const InnerSiteLayoutStyles = styled.main`
 const Items = ({ items, url, level, location }) => {
   return items?.map(item => (
     <Item
-      key={item.system.id}
+      key={item.system?.id}
       item={item}
       url={url}
       level={level}
@@ -56,32 +56,32 @@ const Items = ({ items, url, level, location }) => {
   ))
 }
 
-const isActive = ({ elements, location }) => {
-  if (
-    location.pathname.replaceAll("/", "") ===
-    elements?.url?.value.replaceAll("/", "")
-  ) {
-    return true
-  }
-  if (
-    elements?.subitems?.value &&
-    Array.isArray(elements?.subitems?.value) &&
-    elements?.subitems?.value.length > 0
-  ) {
-    return elements?.subitems?.value.some((x, i) => {
-      if (
-        x?.elements?.permalink &&
-        location.pathname.replaceAll("/", "") ===
-          x.elements?.permalink?.value?.replaceAll("/", "")
-      ) {
-        return true
-      }
-      return isActive({ elements: x.elements, location: location })
-    })
-  }
+// const isActive = ({ elements, location }) => {
+//   if (
+//     location.pathname.replaceAll("/", "") ===
+//     elements?.url?.value.replaceAll("/", "")
+//   ) {
+//     return true
+//   }
+//   if (
+//     elements?.subitems?.value &&
+//     Array.isArray(elements?.subitems?.value) &&
+//     elements?.subitems?.value.length > 0
+//   ) {
+//     return elements?.subitems?.value.some((x, i) => {
+//       if (
+//         x?.elements?.permalink &&
+//         location.pathname.replaceAll("/", "") ===
+//           x.elements?.permalink?.value?.replaceAll("/", "")
+//       ) {
+//         return true
+//       }
+//       return isActive({ elements: x.elements, location: location })
+//     })
+//   }
 
-  return false
-}
+//   return false
+// }
 
 const InContextActiveComponent = ({ close, isOpen }) => {
   React.useEffect(() => {
@@ -94,7 +94,7 @@ const InContextActiveComponent = ({ close, isOpen }) => {
 }
 
 const Item = ({ item, level, location }) => {
-  if (item.system.type === "navigation_item") {
+  if (item.system?.type === "navigation_item") {
     const folder = level === 0 ? "sidebar_item" : FOLDER_NAME[level]
     const newUrl =
       level > 0 ? `${item.elements.url.value}` : item.elements.url.value

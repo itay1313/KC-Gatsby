@@ -252,6 +252,8 @@ exports.createPages = async ({ graphql, actions }) => {
     const BlogReleaseNotesPath = path.resolve(
       "./src/pages/page-release-notes.jsx"
     )
+    const BlogRoadmap = path.resolve("./src/pages/page-roadmap.jsx")
+    const PostRoadmap = path.resolve("./src/pages/post-roadmap.jsx")
     const BlogWhatsNewPath = path.resolve("./src/pages/page-whats-new.jsx")
     const PostWhatsNewPath = path.resolve("./src/pages/post-whats-new.jsx")
     const PageGeneralPath = path.resolve("./src/pages/page-general-type.jsx")
@@ -562,6 +564,22 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allKontentItemBlogRoadmap {
+          nodes {
+            elements {
+              pagename {
+                value
+              }
+              permalink {
+                value
+              }
+            }
+            system {
+              codename
+              id
+            }
+          }
+        }
         allKontentItemBlogReleaseNotes {
           nodes {
             elements {
@@ -574,6 +592,49 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             system {
               codename
+              id
+            }
+          }
+        }
+        allKontentItemRoadmapPages {
+          nodes {
+            elements {
+              early_access_date {
+                value
+              }
+              feature {
+                value {
+                  name
+                  codename
+                }
+              }
+              image_upload {
+                value {
+                  url
+                  width
+                  size
+                }
+              }
+              pagename {
+                name
+                value
+              }
+              permalink {
+                name
+                value
+              }
+              release_date {
+                name
+                value
+              }
+              tags {
+                value {
+                  codename
+                  name
+                }
+              }
+            }
+            system {
               id
             }
           }
@@ -647,8 +708,10 @@ exports.createPages = async ({ graphql, actions }) => {
       fragment page on kontent_item {
         ...KCMD
         ...BRN
+        ...BRM
         ...BWN
         ...RN
+        ...RM
         ...WN
       }
 
@@ -669,7 +732,20 @@ exports.createPages = async ({ graphql, actions }) => {
           type
         }
       }
-
+      fragment BRM on kontent_item_blog_roadmap {
+        elements {
+          pagename {
+            value
+          }
+          permalink {
+            value
+          }
+        }
+        system {
+          id
+          type
+        }
+      }
       fragment BRN on kontent_item_blog_release_notes {
         elements {
           pagename {
@@ -714,7 +790,20 @@ exports.createPages = async ({ graphql, actions }) => {
           type
         }
       }
-
+      fragment RM on kontent_item_roadmap_pages {
+        elements {
+          pagename {
+            value
+          }
+          permalink {
+            value
+          }
+        }
+        system {
+          id
+          type
+        }
+      }
       fragment WN on kontent_item_post___whatsnew {
         elements {
           pagename {
@@ -778,6 +867,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
       const releaseNotesPages = result.data.allKontentItemReleaseNotesPage.nodes
       const whatsNewPages = result.data.allKontentItemPostWhatsnew.nodes
+      const roadmapPages = result.data.allKontentItemRoadmapPages.nodes
 
       // _.each(result.data.allKontentItemNavigationItem.nodes, node => {
       //   const contentPage = node.elements.subitems.value[0]
@@ -799,7 +889,6 @@ exports.createPages = async ({ graphql, actions }) => {
           context: { slug: `${node.elements.permalink.value}` },
         })
       })
-
       _.each(releaseNotesPages, node => {
         const [prev, next] = getPrevAndNextNodes(
           releaseNotesPages,
@@ -809,6 +898,34 @@ exports.createPages = async ({ graphql, actions }) => {
         createPage({
           path: `/release-notes/${node.elements.permalink.value}/`,
           component: slash(PostReleaseNotesPath),
+          context: {
+            systemId: node.system.id,
+            slug: `${node.elements.permalink.value}`,
+            prev: prev ? prev.elements : null,
+            next: next ? next.elements : null,
+          },
+        })
+      })
+      _.each(result.data.allKontentItemBlogRoadmap.nodes, node => {
+        createPage({
+          path: `/${node.elements.permalink.value}/`,
+          component: slash(BlogRoadmap),
+          context: {
+            systemId: node.system.id,
+            slug: `${node.elements.permalink.value}`,
+          },
+        })
+      })
+
+      _.each(roadmapPages, node => {
+        const [prev, next] = getPrevAndNextNodes(
+          roadmapPages,
+          node.elements.permalink.value
+        )
+
+        createPage({
+          path: `/product-roadmap/${node.elements.permalink.value}/`,
+          component: slash(PostRoadmap),
           context: {
             systemId: node.system.id,
             slug: `${node.elements.permalink.value}`,
