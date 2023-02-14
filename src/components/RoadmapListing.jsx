@@ -104,6 +104,22 @@ function RoadmapListing() {
             codename {
               value
             }
+            image {
+              value {
+                description
+                height
+                size
+                name
+                type
+                url
+                width
+              }
+              name
+              type
+            }
+            description {
+              value
+            }
             body {
               value
               modular_content {
@@ -224,10 +240,10 @@ function RoadmapListing() {
       }
     }
   `)
-
   const arrayTaxonomy = data.allKontentTaxonomy.nodes
-  const tags = arrayTaxonomy.filter(v => v.system.name === "Roadmap Tags")[0]
+  const tag = arrayTaxonomy.filter(v => v.system.name === "Roadmap Tags")[0]
     .terms
+  const tags = [...tag, ...tag]
   const features = arrayTaxonomy.filter(
     v => v.system.name === "Roadmap Feature"
   )[0].terms
@@ -239,6 +255,8 @@ function RoadmapListing() {
     codename: v?.elements?.codename?.value,
     name: v?.elements?.name?.value,
     body: v?.elements?.body,
+    image: v?.elements?.image,
+    description: v?.elements?.description,
   }))
   const [launchModal, setLaunchModal] = useState(false)
   const [accessModal, setAccessModal] = useState(false)
@@ -249,6 +267,7 @@ function RoadmapListing() {
   const [filterInput, setFilterInput] = useState("")
 
   const [items, setItems] = useState({})
+  const [itemsToShow, setItemsToShow] = useState(2)
   function filterArray(array, filters) {
     const filterKeys = Object.keys(filters)
     return array.filter(item => {
@@ -308,10 +327,12 @@ function RoadmapListing() {
   useEffect(() => {
     splitFeatures(posts)
   }, [])
+  const [tagsToShow, setTagsToShow] = useState(7)
+  console.log(category)
   return (
     <div className="my-7">
       <h2>Feature Description</h2>
-      <div className="sm:block md:flex lg:flex lg:justify-between">
+      <div className="mobile:w-[100%] sm:block md:flex lg:flex lg:justify-between">
         <Select
           value={category}
           onChange={v => {
@@ -333,7 +354,7 @@ function RoadmapListing() {
           firstOption="categories"
           options={categories}
         />
-        <div className="sm:block md:flex lg:flex">
+        <div className="mobile:w-[100%] mobile:mt-[10px] sm:mt-[10px] sm:block md:flex lg:flex">
           <Select
             value={feature}
             onChange={v => {
@@ -354,11 +375,11 @@ function RoadmapListing() {
             firstOption="upcoming"
             options={features}
           />
-          <div className=" ml-[10px] flex items-center py-[12px] pr-[15px] pl-[18px] w-[263px] sm:w-[280px] border  rounded-[40px] ">
+          <div className="mobile:w-[100%] mobile:mt-[10px] sm:mt-[10px] md:ml-[10px] flex items-center py-[12px] pr-[15px] pl-[18px] w-[263px]  border  rounded-[40px] ">
             <input
               type="text"
               placeholder="Search Feature"
-              className=" w-[90%]"
+              className=" w-[90%] mobile:w-[100%]"
               onChange={e => {
                 let val = e.target.value
                 setFilterInput(val)
@@ -391,170 +412,235 @@ function RoadmapListing() {
           </div>
         </div>
       </div>
-      <div id="indicators">
-        <ul
+      <div id="indicators" className="flex flex-col justify-center">
+        <div
           data-testid="tags"
-          className="indicators pl-[8px] flex  items-center mx-6 my-4"
+          className="indicators w-[80%] pl-[8px] flex justify-center items-center mx-[auto] my-4"
         >
-          <li
-            className={`tag text-xs badge ${
-              !selectedTags.length
-                ? "bg-tags-background border-transparent  text-tags-color"
-                : " border-tags-color"
-            }  mr-2 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background `}
-            role="select"
-            xxx
-            onClick={() => {
-              setSelectedTags([])
-              splitFeatures(
-                filterArray(posts, {
-                  ...filters,
-                  tags: c => true,
-                })
-              )
-            }}
-          >
-            All
-          </li>
-          {tags.map(tag => (
-            <li
-              key={tag.codename}
+          <div className={``}>
+            <div
               className={`tag text-xs badge ${
-                selectedTags.includes(tag.codename)
+                !selectedTags.length
                   ? "bg-tags-background border-transparent  text-tags-color"
                   : " border-tags-color"
-              }  mr-2 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background`}
+              }  mr-2 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background `}
+              role="select"
+              xxx
               onClick={() => {
-                selectedTags.includes(tag.codename)
-                  ? setSelectedTags([
-                      ...selectedTags.filter(v => v !== tag.codename),
-                    ])
-                  : setSelectedTags(prev => [...prev, tag.codename])
-
-                let arrTags = selectedTags.includes(tag.codename)
-                  ? [...selectedTags.filter(v => v !== tag.codename)]
-                  : [...selectedTags, tag.codename]
-                console.log(arrTags)
+                setSelectedTags([])
                 splitFeatures(
                   filterArray(posts, {
                     ...filters,
-                    tags: tags =>
-                      arrTags.length
-                        ? tags.value.find(x => arrTags.includes(x?.codename))
-                        : true,
+                    tags: c => true,
                   })
                 )
               }}
             >
-              {tag.name}
-            </li>
-          ))}
-        </ul>
+              All
+            </div>
+            {tags.slice(0, tagsToShow).map((tag, k) => (
+              <>
+                <div
+                  key={tag.codename}
+                  className={`tag text-xs badge ${
+                    selectedTags.includes(tag.codename)
+                      ? "bg-tags-background border-transparent  text-tags-color"
+                      : " border-tags-color"
+                  } mr-2 my-4 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background min-w-[max-content]`}
+                  onClick={() => {
+                    selectedTags.includes(tag.codename)
+                      ? setSelectedTags([
+                          ...selectedTags.filter(v => v !== tag.codename),
+                        ])
+                      : setSelectedTags(prev => [...prev, tag.codename])
+
+                    let arrTags = selectedTags.includes(tag.codename)
+                      ? [...selectedTags.filter(v => v !== tag.codename)]
+                      : [...selectedTags, tag.codename]
+                    console.log(arrTags)
+                    splitFeatures(
+                      filterArray(posts, {
+                        ...filters,
+                        tags: tags =>
+                          arrTags.length
+                            ? tags.value.find(x =>
+                                arrTags.includes(x?.codename)
+                              )
+                            : true,
+                      })
+                    )
+                  }}
+                >
+                  {tag.name}
+                </div>
+                {/* {k == 6 && <br />} */}
+              </>
+            ))}
+          </div>
+        </div>
+        {Object.keys(tags).length > 7 && (
+          <button
+            className="text-xs items-center self-center text-primary border-none font-Inter mb-[4px]"
+            onClick={() =>
+              tagsToShow == 7
+                ? setTagsToShow(Object.keys(tags).length)
+                : setTagsToShow(7)
+            }
+          >
+            {tagsToShow == 7 ? "More tags" : "Collapse"}
+          </button>
+        )}
       </div>
-      {category?.body && (
-        <LpRichTextElement
-          body_content={category?.body.value}
-          bodyfield={category?.body}
-        />
+      {Object.keys(category).length > 0 && (
+        <div className="flex mobile:block">
+          <div className="w-[30%] mobile:w-full">
+            <ImageElement
+              imgStyle={{ objectFit: `contain` }}
+              options={{
+                fit: "clip",
+              }}
+              className="mx-auto"
+              width={
+                category?.image?.value?.[0].width
+                  ? category?.image?.value?.[0].width
+                  : 400
+              }
+              height={
+                category?.image?.value?.[0].height
+                  ? category?.image?.value?.[0].height
+                  : 600
+              }
+              backgroundColor="#bbbbbb"
+              alt={
+                category?.image?.value?.[0].description
+                  ? category?.image?.value?.[0].description
+                  : category?.image?.value?.[0].name
+              }
+              image={category?.image.value?.[0]}
+            />
+          </div>
+          <div className="w-[70%] mobile:w-full">
+            <h4>{category?.name}</h4>
+            <p className="text-center">{category?.description?.value}</p>
+          </div>
+        </div>
       )}
       <div className="grid">
         {Object.keys(items).length > 0 ? (
-          Object.keys(items).map(v => {
-            let item = items[v]
-            let rowTitle = item.name
-            return (
-              <div className="items-center justify-center">
-                <h3 className="text-center my-4">{rowTitle}</h3>
-                <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                  {item.data.map(post => (
-                    <div className=" border ">
-                      <Link
-                        to={`/product-roadmap/${post.elements.permalink.value}`}
-                      >
-                        {console.log(post)}
-                        {post?.elements?.image_upload?.value && (
-                          <div className="">
-                            <ImageElement
-                              imgStyle={{ objectFit: `fill` }}
-                              options={{
-                                fit: "clip",
-                              }}
-                              className="mx-auto"
-                              width={
-                                post?.elements?.image_upload?.value?.[0].width
-                                  ? post?.elements?.image_upload.value?.[0]
-                                      .width
-                                  : 400
-                              }
-                              height={
-                                post?.elements?.image_upload.value?.[0].height
-                                  ? post?.elements?.image_upload.value?.[0]
-                                      .height
-                                  : 600
-                              }
-                              backgroundColor="#bbbbbb"
-                              alt={
-                                post?.elements?.image_upload.value?.[0]
-                                  .description
-                                  ? post?.elements?.image_upload.value?.[0]
-                                      .description
-                                  : post?.elements?.image_upload.value?.[0].name
-                              }
-                              image={post?.elements?.image_upload.value?.[0]}
-                            />
-                          </div>
-                        )}
-                        <div className="p-[24px] pb-[0]">
-                          <h4 className="text-primary text-lm mb-[0]">
-                            {post?.elements?.pagename?.value}
-                          </h4>
-                          <p className="text-xs text-body-text font-Inter">
-                            {
-                              post?.elements?.category?.value?.[0]?.elements
-                                ?.name?.value
-                            }{" "}
-                            \ {post?.elements?.feature.value?.[0]?.name}
-                          </p>
-                          <p className="text-sm text-body-text font-Inter">
-                            {post?.elements?.feature_description?.value ||
-                              `Allows bots to send private messages and pass conversation context or any consumer-provided information to agents for them to better support consumers after the conversations are transferred to agents."As an Agent, I want to see the summarized consumer details gathered by the Bot in a single overview .`}
-                          </p>
-                        </div>
-                      </Link>
-                      <div className="px-[24px] pb-[24px] flex flex-col">
-                        {post?.elements?.early_access_date?.value && (
-                          <button
-                            className="text-xs text-primary border-none font-Inter mb-[4px]"
-                            onClick={() => setAccessModal(true)}
-                          >
-                            Early Access:{" "}
-                            {moment(
-                              post?.elements?.early_access_date?.value
-                            ).format("MMM YYYY")}
-                          </button>
-                        )}
-                        <button
-                          className="text-xs  border-none text-body-text font-Inter"
-                          onClick={() => setLaunchModal(true)}
+          Object.keys(items)
+            .slice(0, itemsToShow)
+            .map(v => {
+              let item = items[v]
+              let rowTitle = item.name
+              return (
+                <div className="items-center justify-center">
+                  <h3 className="text-center my-4">{rowTitle}</h3>
+                  <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {item.data.map(post => (
+                      <div className=" border ">
+                        <Link
+                          to={`/product-roadmap/${post.elements.permalink.value}`}
                         >
-                          Planned Released:{" "}
-                          {moment(post?.elements?.release_date?.value).format(
-                            "MMM YYYY"
+                          {console.log(post)}
+                          {post?.elements?.image_upload?.value && (
+                            <div className="">
+                              <ImageElement
+                                imgStyle={{ objectFit: `fill` }}
+                                options={{
+                                  fit: "clip",
+                                }}
+                                className="mx-auto"
+                                width={
+                                  post?.elements?.image_upload?.value?.[0].width
+                                    ? post?.elements?.image_upload.value?.[0]
+                                        .width
+                                    : 400
+                                }
+                                height={
+                                  post?.elements?.image_upload.value?.[0].height
+                                    ? post?.elements?.image_upload.value?.[0]
+                                        .height
+                                    : 600
+                                }
+                                backgroundColor="#bbbbbb"
+                                alt={
+                                  post?.elements?.image_upload.value?.[0]
+                                    .description
+                                    ? post?.elements?.image_upload.value?.[0]
+                                        .description
+                                    : post?.elements?.image_upload.value?.[0]
+                                        .name
+                                }
+                                image={post?.elements?.image_upload.value?.[0]}
+                              />
+                            </div>
                           )}
-                        </button>
+                          <div className="p-[24px] pb-[0]">
+                            <h4 className="text-primary text-lm mb-[0]">
+                              {post?.elements?.pagename?.value}
+                            </h4>
+                            <p className="text-xs text-body-text font-Inter">
+                              {
+                                post?.elements?.category?.value?.[0]?.elements
+                                  ?.name?.value
+                              }{" "}
+                              \ {post?.elements?.feature.value?.[0]?.name}
+                            </p>
+                            <p className="text-sm text-body-text font-Inter">
+                              {post?.elements?.feature_description?.value ||
+                                `Allows bots to send private messages and pass conversation context or any consumer-provided information to agents for them to better support consumers after the conversations are transferred to agents."As an Agent, I want to see the summarized consumer details gathered by the Bot in a single overview .`}
+                            </p>
+                          </div>
+                        </Link>
+                        <div className="px-[24px] pb-[24px] flex flex-col">
+                          {post?.elements?.early_access_date?.value && (
+                            <button
+                              className="text-xs text-primary border-none font-Inter mb-[4px]"
+                              onClick={() => setAccessModal(true)}
+                            >
+                              Early Access:{" "}
+                              {moment(
+                                post?.elements?.early_access_date?.value
+                              ).format("MMM YYYY")}
+                            </button>
+                          )}
+                          <button
+                            className="text-xs  border-none text-body-text font-Inter"
+                            onClick={() => setLaunchModal(true)}
+                          >
+                            Planned Released:{" "}
+                            {moment(post?.elements?.release_date?.value).format(
+                              "MMM YYYY"
+                            )}
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )
-          })
+              )
+            })
         ) : (
           <div className="text-[var(--attnalert-color)]">
             No Roadmap matches your criteria
           </div>
         )}
       </div>
+      {Object.keys(items).length > 2 && (
+        <div className="flex justify-center items-center mb-[32px]">
+          <button
+            style={{ fontFamily: "Space Grotesk", fontWeight: 600 }}
+            className="mt-[32px] smobile:mb-[20px] h-[32px] rounded-[24px] border-body-text px-[16px] font-sm border hover:bg-primary hover:text-body-text-invert"
+            onClick={() =>
+              itemsToShow == 2
+                ? setItemsToShow(Object.keys(items).length)
+                : setItemsToShow(2)
+            }
+          >
+            {itemsToShow == 2 ? "Show More" : "Show Less"}
+          </button>
+        </div>
+      )}
       <RemindLaunchModal setIsOpen={setLaunchModal} isOpen={launchModal} />
       <EarlyAccessModal setIsOpen={setAccessModal} isOpen={accessModal} />
     </div>
