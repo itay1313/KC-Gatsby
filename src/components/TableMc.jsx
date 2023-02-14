@@ -67,7 +67,7 @@ const preProcessJSON = json => {
     let add = true
     if (add) {
       arr.push({
-        appleBusinessChat: <AbcIcon />,
+        appleMessagesForBusiness: <AbcIcon />,
         facebook: <FbMessengerIcon />,
         featureName: x.categoryName,
         googleBusinessMessaging: <GcIcon />,
@@ -114,8 +114,8 @@ const TableMc = () => {
         filter: "includes",
       },
       {
-        Header: "Apple Business chat",
-        accessor: "appleBusinessChat",
+        Header: "Apple Messages for Business",
+        accessor: "appleMessagesForBusiness",
       },
       {
         Header: "SMS",
