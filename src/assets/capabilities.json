@@ -12,7 +12,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Not Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -33,7 +33,7 @@
             "googleRCS": "Not Supported"
           },
           {
-            "line": "Not Supported"
+            "line": "Supported"
           },
           {
             "messagingWindowAPI": "Not Supported"
@@ -62,7 +62,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -113,7 +113,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -164,7 +164,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -215,7 +215,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -266,7 +266,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -317,7 +317,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -368,7 +368,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -420,7 +420,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -471,7 +471,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -521,7 +521,7 @@
             "webMessaging": "Supported (authenticated only)"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -571,7 +571,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -621,7 +621,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -671,7 +671,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -727,7 +727,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -777,7 +777,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -827,7 +827,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -877,7 +877,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Not Supported"
+            "appleMessagesForBusiness": "Not Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -928,7 +928,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -979,7 +979,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -1030,7 +1030,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -1081,7 +1081,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -1132,7 +1132,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -1183,7 +1183,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Not Supported"
@@ -1234,7 +1234,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -1285,7 +1285,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -1336,7 +1336,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -1387,7 +1387,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -1438,7 +1438,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -1489,7 +1489,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -1540,7 +1540,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -1597,7 +1597,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -1653,7 +1653,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -1704,7 +1704,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -1755,7 +1755,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -1806,7 +1806,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -1857,7 +1857,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -1909,7 +1909,7 @@
             "webMessaging": "Not Supported"
           },
           {
-            "appleBusinessChat": "Not Supported"
+            "appleMessagesForBusiness": "Not Supported"
           },
           {
             "sms": "Supported"
@@ -1961,7 +1961,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Not Supported"
@@ -2012,7 +2012,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -2064,7 +2064,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "N/A in Channel"
@@ -2114,7 +2114,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -2166,7 +2166,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -2217,7 +2217,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -2268,7 +2268,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -2324,7 +2324,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -2380,7 +2380,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
@@ -2431,7 +2431,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "Supported"
+            "appleMessagesForBusiness": "Supported"
           },
           {
             "sms": "Supported"
@@ -2482,7 +2482,7 @@
             "webMessaging": "Supported"
           },
           {
-            "appleBusinessChat": "N/A in Channel"
+            "appleMessagesForBusiness": "N/A in Channel"
           },
           {
             "sms": "N/A in Channel"
