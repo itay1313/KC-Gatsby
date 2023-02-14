@@ -241,9 +241,8 @@ function RoadmapListing() {
     }
   `)
   const arrayTaxonomy = data.allKontentTaxonomy.nodes
-  const tag = arrayTaxonomy.filter(v => v.system.name === "Roadmap Tags")[0]
+  const tags = arrayTaxonomy.filter(v => v.system.name === "Roadmap Tags")[0]
     .terms
-  const tags = [...tag, ...tag]
   const features = arrayTaxonomy.filter(
     v => v.system.name === "Roadmap Feature"
   )[0].terms
@@ -493,32 +492,34 @@ function RoadmapListing() {
       </div>
       {Object.keys(category).length > 0 && (
         <div className="flex mobile:block">
-          <div className="w-[30%] mobile:w-full">
-            <ImageElement
-              imgStyle={{ objectFit: `contain` }}
-              options={{
-                fit: "clip",
-              }}
-              className="mx-auto"
-              width={
-                category?.image?.value?.[0].width
-                  ? category?.image?.value?.[0].width
-                  : 400
-              }
-              height={
-                category?.image?.value?.[0].height
-                  ? category?.image?.value?.[0].height
-                  : 600
-              }
-              backgroundColor="#bbbbbb"
-              alt={
-                category?.image?.value?.[0].description
-                  ? category?.image?.value?.[0].description
-                  : category?.image?.value?.[0].name
-              }
-              image={category?.image.value?.[0]}
-            />
-          </div>
+          {category?.image?.value?.[0] && (
+            <div className="w-[30%] mobile:w-full">
+              <ImageElement
+                imgStyle={{ objectFit: `contain` }}
+                options={{
+                  fit: "clip",
+                }}
+                className="mx-auto"
+                width={
+                  category?.image?.value?.[0].width
+                    ? category?.image?.value?.[0].width
+                    : 400
+                }
+                height={
+                  category?.image?.value?.[0].height
+                    ? category?.image?.value?.[0].height
+                    : 600
+                }
+                backgroundColor="#bbbbbb"
+                alt={
+                  category?.image?.value?.[0].description
+                    ? category?.image?.value?.[0].description
+                    : category?.image?.value?.[0].name
+                }
+                image={category?.image.value?.[0]}
+              />
+            </div>
+          )}
           <div className="w-[70%] mobile:w-full">
             <h4>{category?.name}</h4>
             <p className="text-center">{category?.description?.value}</p>
