@@ -19,6 +19,7 @@ const tags = [
   { type: "release-notes", title: "Release notes" },
   { type: "whats-new", title: "News" },
   { type: "faqs", title: "Faqs" },
+  { type: "roadmap", title: "Roadmap" },
 ]
 
 const Hit = props => {

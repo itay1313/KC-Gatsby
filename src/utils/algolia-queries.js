@@ -1308,6 +1308,75 @@ const pageQuery = `
       }
     }
   }
+  allKontentItemRoadmapPages(filter: {system: {workflow_step: {eq: "published"}}}) {
+     nodes {
+          elements {
+            body {
+              value
+            }
+            permalink {
+              value
+            }
+            image_upload {
+              value {
+                description
+                height
+                size
+                name
+                type
+                url
+                width
+              }
+              name
+              type
+            }
+            feature_description {
+              value
+            }
+            feature {
+              value {
+                codename
+                name
+              }
+              name
+              taxonomy_group
+            }
+            tags {
+              value {
+                codename
+                name
+              }
+              name
+              taxonomy_group
+            }
+            pagename {
+              value
+            }
+            release_date {
+              value
+            }
+            early_access_date {
+              value
+            }
+            category {
+              value {
+                ... on kontent_item_categories_roadmap {
+                  id
+                  elements {
+                    codename {
+                      value
+                    }
+                    name {
+                      value
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+  }
 }
 `
 
@@ -1322,6 +1391,8 @@ const createObjectIdMap = (nodeSet, type) => {
 
       categoryName: x?.elements?.categoryname?.value
         ? x?.elements?.categoryname?.value
+        : x?.elements?.category?.value?.[0]?.elements?.codename?.value
+        ? x?.elements?.category?.value?.[0]?.elements?.codename?.value
         : undefined,
       subCategoryName: x?.elements?.subcategoryname?.value
         ? x.elements.subcategoryname.value
@@ -1341,6 +1412,8 @@ const createObjectIdMap = (nodeSet, type) => {
               )
             : undefined
           : undefined,
+      description: x.elements?.feature_description?.value,
+      dataRoadmap: x.elements,
     }
   })
 }
@@ -1362,6 +1435,7 @@ const queries = [
         "release-notes"
       ),
       ...createObjectIdMap(data?.allKontentItemKcFaqs?.nodes, "faqs"),
+      ...createObjectIdMap(data?.allKontentItemRoadmapPages?.nodes, "roadmap"),
     ],
   },
 ]

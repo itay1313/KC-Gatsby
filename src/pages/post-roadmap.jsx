@@ -30,7 +30,6 @@ const RoadmapPostTemplate = ({ data }) => {
   // // general template
   const roadmapPages = data?.roadmapPages
   const pageTitle = roadmapPages?.elements?.pagename?.value
-  const pageCategory = roadmapPages?.elements?.category?.value?.name
   // const pageSubTitle = roadmapPages?.elements?.subtitle?.value
 
   // const product_release_notes =
@@ -150,7 +149,7 @@ const RoadmapPostTemplate = ({ data }) => {
             </button>
             <button
               style={{ fontFamily: "Space Grotesk", fontWeight: 600 }}
-              className=" h-[48px]  rounded-[24px] rounded text-body-text border-body-text px-[32px] py-[12px] font-[Space Grotesk] font-lm border"
+              className=" h-[48px]  rounded-[24px]  text-body-text border-body-text px-[32px] py-[12px] font-[Space Grotesk] font-lm border"
               onClick={() => setLaunchModal(true)}
             >
               Remind me at launch

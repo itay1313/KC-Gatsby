@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { graphql, Link, useStaticQuery, navigate } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import _ from "lodash"
 import { ImageElement } from "@kentico/gatsby-kontent-components"
 import moment from "moment"
 import Select from "./Select"
-import LpRichTextElement from "./widgets/LpRichTextElement"
 import RemindLaunchModal from "./RemindLaunchModal"
 import EarlyAccessModal from "./EarlyAccessModal"
 function RoadmapListing() {
@@ -322,12 +321,9 @@ function RoadmapListing() {
   }
   useEffect(() => {
     splitFeatures(posts)
-  }, [])
-  useEffect(() => {
-    splitFeatures(posts)
-  }, [])
+  }, [posts])
+
   const [tagsToShow, setTagsToShow] = useState(7)
-  console.log(category)
   return (
     <div className="my-7">
       <h2>Feature Description</h2>
@@ -423,8 +419,7 @@ function RoadmapListing() {
                   ? "bg-tags-background border-transparent  text-tags-color"
                   : " border-tags-color"
               }  mr-2 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background `}
-              role="select"
-              xxx
+              role="none"
               onClick={() => {
                 setSelectedTags([])
                 splitFeatures(
@@ -446,6 +441,7 @@ function RoadmapListing() {
                       ? "bg-tags-background border-transparent  text-tags-color"
                       : " border-tags-color"
                   } mr-2 my-4 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background min-w-[max-content]`}
+                  role="none"
                   onClick={() => {
                     selectedTags.includes(tag.codename)
                       ? setSelectedTags([
@@ -472,7 +468,7 @@ function RoadmapListing() {
                 >
                   {tag.name}
                 </div>
-                {/* {k == 6 && <br />} */}
+                {/* {k === 6 && <br />} */}
               </>
             ))}
           </div>
@@ -481,12 +477,12 @@ function RoadmapListing() {
           <button
             className="text-xs items-center self-center text-primary border-none font-Inter mb-[4px]"
             onClick={() =>
-              tagsToShow == 7
+              tagsToShow === 7
                 ? setTagsToShow(Object.keys(tags).length)
                 : setTagsToShow(7)
             }
           >
-            {tagsToShow == 7 ? "More tags" : "Collapse"}
+            {tagsToShow === 7 ? "More tags" : "Collapse"}
           </button>
         )}
       </div>
@@ -633,12 +629,12 @@ function RoadmapListing() {
             style={{ fontFamily: "Space Grotesk", fontWeight: 600 }}
             className="mt-[32px] smobile:mb-[20px] h-[32px] rounded-[24px] border-body-text px-[16px] font-sm border hover:bg-primary hover:text-body-text-invert"
             onClick={() =>
-              itemsToShow == 2
+              itemsToShow === 2
                 ? setItemsToShow(Object.keys(items).length)
                 : setItemsToShow(2)
             }
           >
-            {itemsToShow == 2 ? "Show More" : "Show Less"}
+            {itemsToShow === 2 ? "Show More" : "Show Less"}
           </button>
         </div>
       )}
