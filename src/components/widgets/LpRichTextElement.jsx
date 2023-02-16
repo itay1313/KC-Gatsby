@@ -135,77 +135,79 @@ const LpRichTextElement = ({ body_content, bodyfield }) => {
               )
             }
             case "image__widget": {
-              let codeName =
-                linkedItem?.elements?.orientation?.value[0]?.codename
-              let imgWidth = linkedItem?.elements?.image?.value[0]?.width
-              let imgHeight = linkedItem?.elements?.image?.value[0]?.height
-              if (codeName === "horizontal" || codeName === "vertical")
-                lightBoxImagess.push(linkedItem.elements.image.value[0])
-              return (
-                <div
-                  className={
-                    "my-8 " +
-                    linkedItem.elements.orientation.value[0].codename +
-                    " flex flex-col text-center cursor-pointer"
-                  }
-                  style={{
-                    cursor: "pointer",
-                  }}
-                  key={linkedItem.system.id}
-                  role="none"
-                  onClick={v => {
-                    if (codeName === "horizontal" || codeName === "vertical")
-                      openLightbox(
-                        linkedItem.elements.image.value[0],
+              if (linkedItem?.elements?.orientation?.value?.[0]) {
+                let codeName =
+                  linkedItem?.elements?.orientation?.value[0]?.codename
+                let imgWidth = linkedItem?.elements?.image?.value[0]?.width
+                let imgHeight = linkedItem?.elements?.image?.value[0]?.height
+                if (codeName === "horizontal" || codeName === "vertical")
+                  lightBoxImagess.push(linkedItem.elements.image.value[0])
+                return (
+                  <div
+                    className={
+                      "my-8 " +
+                      linkedItem.elements.orientation.value[0].codename +
+                      " flex flex-col text-center cursor-pointer"
+                    }
+                    style={{
+                      cursor: "pointer",
+                    }}
+                    key={linkedItem.system.id}
+                    role="none"
+                    onClick={v => {
+                      if (codeName === "horizontal" || codeName === "vertical")
+                        openLightbox(
+                          linkedItem.elements.image.value[0],
 
-                        null
-                      )
-                    else return
-                  }}
-                >
-                  {linkedItem.elements.orientation.value[0].codename ===
-                    "horizontal" && (
-                    <ImageElement
-                      imgStyle={{ objectFit: `contain` }}
-                      options={{
-                        fit: "clip",
-                      }}
-                      image={linkedItem.elements.image.value[0]}
-                      alt={
-                        linkedItem.elements.image.description
-                          ? linkedItem.elements.image.description
-                          : linkedItem.elements.image.name
-                      }
-                      width={imgWidth ? imgWidth : 600}
-                      height={imgHeight ? imgHeight : 400}
-                      backgroundColor="#bbbbbb"
-                    />
-                  )}
+                          null
+                        )
+                      else return
+                    }}
+                  >
+                    {linkedItem.elements.orientation.value[0].codename ===
+                      "horizontal" && (
+                      <ImageElement
+                        imgStyle={{ objectFit: `contain` }}
+                        options={{
+                          fit: "clip",
+                        }}
+                        image={linkedItem.elements.image.value[0]}
+                        alt={
+                          linkedItem.elements.image.description
+                            ? linkedItem.elements.image.description
+                            : linkedItem.elements.image.name
+                        }
+                        width={imgWidth ? imgWidth : 600}
+                        height={imgHeight ? imgHeight : 400}
+                        backgroundColor="#bbbbbb"
+                      />
+                    )}
 
-                  {linkedItem.elements.orientation.value[0].codename ===
-                    "vertical" && (
-                    <ImageElement
-                      imgStyle={{ objectFit: `contain` }}
-                      options={{
-                        fit: "clip",
-                      }}
-                      className="mx-auto"
-                      width={imgWidth ? imgWidth : 400}
-                      height={imgHeight ? imgHeight : 600}
-                      backgroundColor="#bbbbbb"
-                      alt={
-                        linkedItem.elements.image.description
-                          ? linkedItem.elements.image.description
-                          : linkedItem.elements.image.name
-                      }
-                      image={linkedItem.elements.image.value[0]}
-                    />
-                  )}
-                  <p className="text-center my-2 opacity-70 italic">
-                    {linkedItem.elements.description.value}
-                  </p>
-                </div>
-              )
+                    {linkedItem.elements.orientation.value[0].codename ===
+                      "vertical" && (
+                      <ImageElement
+                        imgStyle={{ objectFit: `contain` }}
+                        options={{
+                          fit: "clip",
+                        }}
+                        className="mx-auto"
+                        width={imgWidth ? imgWidth : 400}
+                        height={imgHeight ? imgHeight : 600}
+                        backgroundColor="#bbbbbb"
+                        alt={
+                          linkedItem.elements.image.description
+                            ? linkedItem.elements.image.description
+                            : linkedItem.elements.image.name
+                        }
+                        image={linkedItem.elements.image.value[0]}
+                      />
+                    )}
+                    <p className="text-center my-2 opacity-70 italic">
+                      {linkedItem.elements.description.value}
+                    </p>
+                  </div>
+                )
+              } else return null
             }
 
             case "code_sample": {
