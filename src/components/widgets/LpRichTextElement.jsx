@@ -135,9 +135,10 @@ const LpRichTextElement = ({ body_content, bodyfield }) => {
               )
             }
             case "image__widget": {
-              let codeName = linkedItem.elements.orientation.value[0].codename
-              let imgWidth = linkedItem.elements.image.value[0].width
-              let imgHeight = linkedItem.elements.image.value[0].height
+              let codeName =
+                linkedItem?.elements?.orientation?.value[0]?.codename
+              let imgWidth = linkedItem?.elements?.image?.value[0]?.width
+              let imgHeight = linkedItem?.elements?.image?.value[0]?.height
               if (codeName === "horizontal" || codeName === "vertical")
                 lightBoxImagess.push(linkedItem.elements.image.value[0])
               return (
