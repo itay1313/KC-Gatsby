@@ -412,7 +412,7 @@ function RoadmapListing() {
           data-testid="tags"
           className="indicators w-[80%] pl-[8px] flex justify-center items-center mx-[auto] my-4"
         >
-          <div className={`mobile:flex mobile:flex-wrap mobile:justify-center`}>
+          <div className={`flex flex-wrap justify-center`}>
             <div
               className={`tag text-xs badge ${
                 !selectedTags.length
