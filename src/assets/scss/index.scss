@@ -14,10 +14,8 @@ body.light {
   --primary-hover: #204ac5;
   --primary-focus: #204ac5;
   --primary-content: #03011d;
-
   --secondary: #ededfa;
   --secondary-hover: #fcfcfc;
-
   --visited-color: #6f38e5;
   --visited-color-hover: #5520c5;
   --link-color: var(--primary);
@@ -56,7 +54,6 @@ body.light {
   --content-widget-text: #34363b;
   --missing-something-background: #f8f8f8;
   --missing-something-text: #000;
-
   --notice-background: #f0f6fa;
   --notice-color: #006bb3;
   --warning-background: #faf4f0;
@@ -75,7 +72,6 @@ body.light {
   --attntip-color: #18924a;
   --attninfo-background: #eeeff1;
   --attninfo-color: #5a5f72;
-
   --box-shadow: #dadbe5e0;
   --search-input-background: #eeeff1;
   --search-input-color: #292b33;
@@ -91,6 +87,9 @@ body.light {
   --scroll-bg: #e7e8ec;
   --faq-icon: #006bb2;
   --dropdown-active: #eeeff1;
+  --modal-content: #afb3c0;
+  --roadmap-input-border: #afb3c0;
+  --card-roadmap: rgba(41, 43, 51, 0.05);
 }
 
 body.dark {
@@ -175,4 +174,6 @@ body.dark {
   --scroll-bg: #24262e;
   --faq-icon: #429bd7;
   --dropdown-active: #363944;
+  --roadmap-input-border: #afb3c0;
+  --card-roadmap: rgba(255, 255, 255, 0.05);
 }

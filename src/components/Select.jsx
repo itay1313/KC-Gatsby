@@ -11,7 +11,7 @@ export default function Select({ value, options, onChange, sm, firstOption }) {
         className={`${
           sm ? "md:w-[186px] " : "lg:w-[280px] md:w-[201px] "
         }flex justify-between drop-btn
-          mobile:w-[100%] h-[48px] justify-center border  bg-body-background  
+          mobile:w-[100%] h-[48px] justify-center border border-[var(--roadmap-input-border)]  bg-body-background  
           p-[12px] pr-[0px] text-lm hover:bg-opacity-30 focus:outline-none text-ellipsis focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
       >
         <div className="w-full text-lm text-ellipsis">

@@ -3,13 +3,11 @@ import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 
 import Seo from "../components/Seo"
-import Article from "../components/Article"
-import PostSidebar from "../components/postSidebar"
 import Footer from "../components/Footer"
 import Slash from "../components/widgets/Slash"
-import LpRichTextElement from "../components/widgets/LpRichTextElement"
+// import LpRichTextElement from "../components/widgets/LpRichTextElement"
 import RoadmapListing from "../components/RoadmapListing"
-
+import HeroImg from "../assets/images/roadmap/hero.png"
 const InnerSiteLayoutStyles = styled.main`
   width: 100%;
 `
@@ -20,7 +18,7 @@ const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
   // const allReleaseNotesPage = data?.allReleaseNotesPage
   // const kontentItemBlogReleaseNotes = data?.kontentItemBlogReleaseNotes
 
-  // const pageTitle = kontentItemBlogReleaseNotes?.elements?.pagename?.value
+  const pageTitle = data.kontentItemBlogRoadmap?.elements?.pagename?.value
 
   // const items = []
   // const articles = allReleaseNotesPage.nodes
@@ -30,12 +28,12 @@ const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
   //   )
   // })
   const elements = data.kontentItemBlogRoadmap?.elements
-  const body = elements?.body?.value
-  const footer = elements?.footer?.value
+  // const body = elements?.body?.value
+  // const footer = elements?.footer?.value
 
   return (
     <>
-      {/* <Seo title={pageTitle} description={pageTitle} /> */}
+      <Seo title={pageTitle} description={pageTitle} />
       <div>
         <div
           className="documenttitlecontainer"
@@ -72,23 +70,50 @@ const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
           </h1>
         </div>
         <InnerSiteLayoutStyles>
-          {body !== "<p><br></p>" && (
-            <div className="pb-8">
-              <LpRichTextElement
-                body_content={body}
-                bodyfield={elements?.body}
-              />
+          <div className="mb-[32px]">
+            <div className="w-full mb-[24px]">
+              <img src={HeroImg} alt="roadmap hero" />
             </div>
-          )}
+            <p className="mb-[24px]">
+              Welcome to LivePerson's digital product roadmap. &nbsp;Here you
+              can find details about features we have released into the
+              production environment, features we are committed to deliver, and
+              progress on our strategic vision.
+            </p>
+            <h2 className="mb-[16px]">Safe Harbor</h2>
+            <p>
+              The following is intended to outline our general product
+              direction. It is intended for information purposes only, and may
+              not be incorporated into any contract. It is not a commitment to
+              deliver any material, code, or functionality, and should not be
+              relied upon in making purchasing decisions.
+              <br />
+              The development, release, and timing of any features or
+              functionality described for LivePerson’s products remains at the
+              sole discretion of LivePerson and is subject to change.
+            </p>
+          </div>
           <RoadmapListing />
-          {footer !== "<p><br></p>" && (
-            <div className="pb-8">
-              <LpRichTextElement
-                body_content={footer}
-                bodyfield={elements?.footer}
-              />
+
+          <div>
+            <h2 className="mb-[16px] ">See also</h2>
+            <div className="mb-[16px]">
+              <Link
+                className=" text-[21px] font-semibold leading-[28px]"
+                to="/whats-new/"
+              >
+                What's New
+              </Link>
             </div>
-          )}
+            <div className="mb-[32px]">
+              <Link
+                className="text-[21px] font-semibold leading-[28px]"
+                to="/release-notes/"
+              >
+                Release notes
+              </Link>
+            </div>
+          </div>
         </InnerSiteLayoutStyles>
       </div>
       <Footer />

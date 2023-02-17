@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react"
-import { Fragment, useState } from "react"
+import { Fragment } from "react"
 import React from "react"
 export default function EarlyAccessModal({ isOpen, setIsOpen }) {
   return (
@@ -33,7 +33,7 @@ export default function EarlyAccessModal({ isOpen, setIsOpen }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="smobile:w-[320px] w-[480px] transform overflow-hidden  bg-[var(--footer-background)] p-[32px] smobile:p-[24px] text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="smobile:w-[320px] w-[480px] transform overflow-hidden  bg-[var(--body-background)] p-[32px] smobile:p-[24px] text-left align-middle shadow-xl transition-all">
                   <button
                     className="border-none absolute top-[21px] right-[21px]"
                     onClick={() => setIsOpen(false)}
@@ -47,7 +47,7 @@ export default function EarlyAccessModal({ isOpen, setIsOpen }) {
                     >
                       <path
                         d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z"
-                        fill="#292B33"
+                        fill="var(--body-text)"
                       />
                     </svg>
                   </button>
@@ -62,49 +62,49 @@ export default function EarlyAccessModal({ isOpen, setIsOpen }) {
                       <g clip-path="url(#clip0_14782_55772)">
                         <path
                           d="M24 46.5C36.4264 46.5 46.5 36.4264 46.5 24C46.5 11.5736 36.4264 1.5 24 1.5C11.5736 1.5 1.5 11.5736 1.5 24C1.5 36.4264 11.5736 46.5 24 46.5Z"
-                          stroke="#292B33"
+                          stroke="var(--body-text)"
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M24 12.0508V23.9988H16"
-                          stroke="#292B33"
+                          stroke="var(--body-text)"
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M1.5 24H6.392"
-                          stroke="#292B33"
+                          stroke="var(--body-text)"
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M3.214 15.3828L7.734 17.2568"
-                          stroke="#292B33"
+                          stroke="var(--body-text)"
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M8.098 8.08203L11.554 11.542"
-                          stroke="#292B33"
+                          stroke="var(--body-text)"
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M15.404 3.20703L17.272 7.72703"
-                          stroke="#292B33"
+                          stroke="var(--body-text)"
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M24.022 1.5L24.016 6.392"
-                          stroke="#292B33"
+                          stroke="var(--body-text)"
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -131,6 +131,7 @@ export default function EarlyAccessModal({ isOpen, setIsOpen }) {
                     placeholder="Company name"
                     onChange={e => {
                       let val = e.target.value
+                      console.log(val)
                     }}
                     className="mb-[16px] border border-jumpto-border-color flex items-center p-[12px]   w-full "
                   />
@@ -139,6 +140,7 @@ export default function EarlyAccessModal({ isOpen, setIsOpen }) {
                     placeholder="Your email"
                     onChange={e => {
                       let val = e.target.value
+                      console.log(val)
                     }}
                     className=" border border-jumpto-border-color flex items-center p-[12px]  w-full "
                   />

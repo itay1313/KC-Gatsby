@@ -325,8 +325,8 @@ function RoadmapListing() {
 
   const [tagsToShow, setTagsToShow] = useState(7)
   return (
-    <div className="my-7">
-      <h2>Feature Description</h2>
+    <div className="mb-[56px]">
+      <h2 className="mb-[16px]">Feature Description</h2>
       <div className="mobile:w-[100%] sm:block md:flex lg:flex lg:justify-between">
         <Select
           value={category}
@@ -370,7 +370,7 @@ function RoadmapListing() {
             firstOption="upcoming"
             options={features}
           />
-          <div className="mobile:w-[100%] mobile:mt-[10px] sm:mt-[10px] md:ml-[10px] flex items-center py-[12px] pr-[15px] pl-[18px] w-[263px]  border  rounded-[40px] ">
+          <div className="mobile:w-[100%] border border-[var(--roadmap-input-border)]  mobile:mt-[10px] sm:mt-[10px] md:ml-[10px] flex items-center py-[12px] pr-[15px] pl-[18px] w-[263px]    rounded-[40px] ">
             <input
               type="text"
               placeholder="Search Feature"
@@ -407,18 +407,18 @@ function RoadmapListing() {
           </div>
         </div>
       </div>
-      <div id="indicators" className="flex flex-col justify-center">
+      <div id="indicators" className="flex flex-col justify-center mb-[40px]">
         <div
           data-testid="tags"
           className="indicators w-[80%] pl-[8px] flex justify-center items-center mx-[auto] my-4"
         >
-          <div className={``}>
+          <div className={`mobile:flex mobile:flex-wrap mobile:justify-center`}>
             <div
               className={`tag text-xs badge ${
                 !selectedTags.length
                   ? "bg-tags-background border-transparent  text-tags-color"
-                  : " border-tags-color"
-              }  mr-2 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background `}
+                  : " border-[var(--tags-color)]"
+              } mb-[4px] mr-[4px] py-[4px] px-[15px] mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background `}
               role="none"
               onClick={() => {
                 setSelectedTags([])
@@ -439,8 +439,8 @@ function RoadmapListing() {
                   className={`tag text-xs badge ${
                     selectedTags.includes(tag.codename)
                       ? "bg-tags-background border-transparent  text-tags-color"
-                      : " border-tags-color"
-                  } mr-2 my-4 py-3 px-4 mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background min-w-[max-content]`}
+                      : " border-[var(--tags-color)]"
+                  }  mb-[4px] mr-[4px] py-[4px] px-[15px] mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background min-w-[max-content]`}
                   role="none"
                   onClick={() => {
                     selectedTags.includes(tag.codename)
@@ -487,25 +487,17 @@ function RoadmapListing() {
         )}
       </div>
       {Object.keys(category).length > 0 && (
-        <div className="flex mobile:block">
+        <div className="flex mobile:block mb-[32px]">
           {category?.image?.value?.[0] && (
-            <div className="w-[30%] mobile:w-full">
+            <div className="w-[280px] h-[210px]">
               <ImageElement
                 imgStyle={{ objectFit: `contain` }}
                 options={{
                   fit: "clip",
                 }}
                 className="mx-auto"
-                width={
-                  category?.image?.value?.[0].width
-                    ? category?.image?.value?.[0].width
-                    : 400
-                }
-                height={
-                  category?.image?.value?.[0].height
-                    ? category?.image?.value?.[0].height
-                    : 600
-                }
+                width={280}
+                height={210}
                 backgroundColor="#bbbbbb"
                 alt={
                   category?.image?.value?.[0].description
@@ -516,8 +508,8 @@ function RoadmapListing() {
               />
             </div>
           )}
-          <div className="w-[70%] mobile:w-full">
-            <h4>{category?.name}</h4>
+          <div className="w-[70%] mobile:w-full p-[16px]">
+            <h4 className="mb-[16px]">{category?.name}</h4>
             <p className="text-center">{category?.description?.value}</p>
           </div>
         </div>
@@ -526,27 +518,33 @@ function RoadmapListing() {
         {Object.keys(items).length > 0 ? (
           Object.keys(items)
             .slice(0, itemsToShow)
-            .map(v => {
+            .map((v, k) => {
               let item = items[v]
               let rowTitle = item.name
               return (
-                <div className="items-center justify-center">
-                  <h3 className="text-center my-4">{rowTitle}</h3>
-                  <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="items-center justify-center" key={k}>
+                  <h3
+                    className={`text-center ${
+                      k !== 0 && "mt-[32px]"
+                    } mb-[32px]`}
+                  >
+                    {rowTitle}
+                  </h3>
+                  <div className="grid gap-[16px] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {item.data.map(post => (
-                      <div className=" border ">
+                      <div className="group roadmapCard hover:border-[3px]  border border-[var(--card-roadmap)]">
                         <Link
                           to={`/product-roadmap/${post.elements.permalink.value}`}
                         >
                           {console.log(post)}
                           {post?.elements?.image_upload?.value && (
-                            <div className="">
+                            <div className="w-full h-[160px]">
                               <ImageElement
                                 imgStyle={{ objectFit: `fill` }}
                                 options={{
                                   fit: "clip",
                                 }}
-                                className="mx-auto"
+                                className="cardImg mx-auto w-full h-[160px] group-hover:scale-[1.024] group-hover:opacity-[0.75] "
                                 width={
                                   post?.elements?.image_upload?.value?.[0].width
                                     ? post?.elements?.image_upload.value?.[0]
@@ -573,7 +571,7 @@ function RoadmapListing() {
                             </div>
                           )}
                           <div className="p-[24px] pb-[0]">
-                            <h4 className="text-primary text-lm mb-[0]">
+                            <h4 className="text-primary text-lm pb-[8px]  leading-[20px] mb-[0]">
                               {post?.elements?.pagename?.value}
                             </h4>
                             <p className="text-xs text-body-text font-Inter">
@@ -583,7 +581,7 @@ function RoadmapListing() {
                               }{" "}
                               \ {post?.elements?.feature.value?.[0]?.name}
                             </p>
-                            <p className="text-sm text-body-text font-Inter">
+                            <p className="text-sm text-body-text font-Inter roadmapCardDescription">
                               {post?.elements?.feature_description?.value ||
                                 `Allows bots to send private messages and pass conversation context or any consumer-provided information to agents for them to better support consumers after the conversations are transferred to agents."As an Agent, I want to see the summarized consumer details gathered by the Bot in a single overview .`}
                             </p>
@@ -619,7 +617,8 @@ function RoadmapListing() {
             })
         ) : (
           <div className="text-[var(--attnalert-color)]">
-            No Roadmap matches your criteria
+            There are currently no roadmap items that match your search or
+            filter criteria.
           </div>
         )}
       </div>
