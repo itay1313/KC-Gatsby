@@ -62,13 +62,13 @@ A quick look at the top-level files and directories you’ll see in a Gatsby pro
 /
 |-- /public
 |-- /src
-    |-- /assets
-        |-- capabilities.json
-        |-- reportbuilder.json
-    |-- /components
-    |-- /pages
+|-- /assets
+|-- capabilities.json
+|-- reportbuilder.json
+|-- /components
+|-- /pages
 |-- /static
-    |-- lpchat.js
+|-- lpchat.js
 |-- gatsby-config.js
 |-- gatsby-node.js
 |-- gatsby-ssr.js
