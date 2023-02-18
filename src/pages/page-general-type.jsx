@@ -122,7 +122,7 @@ const KnowledgeCenterMarkdownPageTemplate = ({
           <div className="maincontent" id="scroll-smooth">
             <div ref={textRef}>
               {introduction !== "<p><br></p>" && (
-                <div className="pb-8">
+                <div className="introduction pb-8">
                   <LpRichTextElement
                     body_content={introduction}
                     bodyfield={knowledgeCenterMarkdown?.elements?.introduction}
