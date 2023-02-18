@@ -78,7 +78,7 @@ const FaqTemplate = ({ data, pageContext, location }) => {
         <InnerSiteLayoutStyles>
           <div className="maincontent" id="scroll-smooth">
             {introduction !== "<p><br></p>" && (
-              <div className="pb-8">
+              <div className="introduction pb-8">
                 <LpRichTextElement
                   body_content={introduction}
                   bodyfield={faqPageQuery?.elements?.introduction}

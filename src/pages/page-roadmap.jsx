@@ -27,7 +27,7 @@ const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
   //     <Article data={article} key={article.elements.permalink.value} />
   //   )
   // })
-  const elements = data.kontentItemBlogRoadmap?.elements
+  // const elements = data.kontentItemBlogRoadmap?.elements
   // const body = elements?.body?.value
   // const footer = elements?.footer?.value
 
@@ -126,6 +126,7 @@ export default BlogReleaseNotesTemplate
 export const query = graphql`
   query ($systemId: String) {
     kontentItemBlogRoadmap(system: { id: { eq: $systemId } }) {
+      elements {
         pagename {
           value
           name

@@ -295,9 +295,7 @@ export const query = graphql`
         early_access_date {
           value
         }
-        early_access_sign_up_email {
-          value
-        }
+
         feature {
           value {
             name
