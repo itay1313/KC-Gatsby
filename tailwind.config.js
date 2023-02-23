@@ -70,6 +70,7 @@ module.exports = {
         "link-color": "var(--link-color)",
         "link-color-hover": "var(--link-color-hover)",
         "body-background": "var(--body-background)",
+        "gradient-background": "var(--gradient-background)",
         "link-color-hover": "var(--link-color-hover)",
         "body-text": "var(--body-text)",
         "body-text-invert": "var(--body-text-invert)",
@@ -102,6 +103,7 @@ module.exports = {
         "attndeprecation-background": "var(--attndeprecation-background)",
         "attntip-background": "var(--attntip-background)",
         "attninfo-background": "var(--attninfo-background)",
+        "dark-text": "var(--dark-text)",
         blue: {
           navy: "#090C43",
           "navy-light": "#1D1F52",

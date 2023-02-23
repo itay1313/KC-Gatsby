@@ -195,6 +195,31 @@ export const query = graphql`
                 }
               }
             }
+            ... on kontent_item_iframe_widget {
+              id
+              system {
+                codename
+                type
+              }
+              elements {
+                iframe_width {
+                  value
+                  name
+                }
+                iframe_src {
+                  value
+                  name
+                }
+                iframe_height {
+                  name
+                  value
+                }
+                iframe_border {
+                  name
+                  value
+                }
+              }
+            }
           }
           images {
             url
@@ -307,6 +332,31 @@ export const query = graphql`
                   value {
                     codename
                   }
+                }
+              }
+            }
+            ... on kontent_item_iframe_widget {
+              id
+              system {
+                codename
+                type
+              }
+              elements {
+                iframe_width {
+                  name
+                  value
+                }
+                iframe_src {
+                  value
+                  name
+                }
+                iframe_height {
+                  value
+                  name
+                }
+                iframe_border {
+                  value
+                  name
                 }
               }
             }

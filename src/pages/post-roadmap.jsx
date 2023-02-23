@@ -139,7 +139,7 @@ const RoadmapPostTemplate = ({ data }) => {
             </div>
           )} */}
           {/* <Jumpto title={pageTitle} jumpToItems={jumpToItems} /> */}
-          <div className="smobile:block flex items-start mb-[32px]">
+          <div className="hidden smobile:block flex items-start mb-[32px]">
             <button
               style={{ fontFamily: "Space Grotesk", fontWeight: 600 }}
               className="smobile:mb-[20px] mr-[10px] h-[48px] rounded-[24px] border-body-text px-[32px] py-[12px] font-[Space Grotesk] font-lm border"
