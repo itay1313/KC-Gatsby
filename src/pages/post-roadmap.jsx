@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
+// import { useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 // import moment from "moment"
@@ -9,8 +10,8 @@ import Breadcrumbs from "../components/Breadcrumbs"
 import Footer from "../components/Footer"
 import Tags from "../components/Tags"
 import { ImageElement } from "@kentico/gatsby-kontent-components"
-import RemindLaunchModal from "../components/RemindLaunchModal"
-import EarlyAccessModal from "../components/EarlyAccessModal"
+// import RemindLaunchModal from "../components/RemindLaunchModal"
+// import EarlyAccessModal from "../components/EarlyAccessModal"
 
 const InnerSiteLayoutStyles = styled.main`
   width: 100%;
@@ -18,8 +19,8 @@ const InnerSiteLayoutStyles = styled.main`
 
 const RoadmapPostTemplate = ({ data }) => {
   // const contentRef = useRef()
-  const [launchModal, setLaunchModal] = useState(false)
-  const [accessModal, setAccessModal] = useState(false)
+  // const [launchModal, setLaunchModal] = useState(false)
+  // const [accessModal, setAccessModal] = useState(false)
   // useEffect(() => {
   //   if (contentRef.current && data) {
   //     const headerQuery = contentRef.current.querySelectorAll("h2")
@@ -72,28 +73,30 @@ const RoadmapPostTemplate = ({ data }) => {
         <InnerSiteLayoutStyles>
           <div className="maincontent mb-8"></div>
           <div
-            className={"my-8  flex flex-col text-center cursor-pointer"}
+            className={
+              "my-8 h-[480px] w-full flex flex-col text-center cursor-pointer"
+            }
             style={{
               cursor: "pointer",
             }}
             role="none"
           >
-            <ImageElement
-              imgStyle={{ objectFit: `contain` }}
-              options={{
-                fit: "clip",
-              }}
-              className="mx-auto"
-              width={coverImage.width ? coverImage.width : 400}
-              height={coverImage.height ? coverImage.height : 600}
-              backgroundColor="#bbbbbb"
-              alt={
-                coverImage.description
-                  ? coverImage.description
-                  : coverImage.name
-              }
-              image={coverImage}
-            />
+            <div className={" max-h-[480px] w-full overflow-hidden"}>
+              <ImageElement
+                // imgStyle={{ height: `480px` }}
+                // className="mx-auto"
+                // width={coverImage.width ? coverImage.width : 400}
+                // height={480}
+                backgroundColor="#bbbbbb"
+                alt={
+                  coverImage.description
+                    ? coverImage.description
+                    : coverImage.name
+                }
+                image={coverImage}
+              />
+            </div>
+
             <p className="text-center my-2 opacity-70 italic">
               {coverImage.description}
             </p>
@@ -139,7 +142,7 @@ const RoadmapPostTemplate = ({ data }) => {
             </div>
           )} */}
           {/* <Jumpto title={pageTitle} jumpToItems={jumpToItems} /> */}
-          <div className="hidden smobile:block flex items-start mb-[32px]">
+          {/* <div className="hidden smobile:block flex items-start mb-[32px]">
             <button
               style={{ fontFamily: "Space Grotesk", fontWeight: 600 }}
               className="smobile:mb-[20px] mr-[10px] h-[48px] rounded-[24px] border-body-text px-[32px] py-[12px] font-[Space Grotesk] font-lm border"
@@ -154,9 +157,9 @@ const RoadmapPostTemplate = ({ data }) => {
             >
               Remind me at launch
             </button>
-          </div>
+          </div> 
           <RemindLaunchModal setIsOpen={setLaunchModal} isOpen={launchModal} />
-          <EarlyAccessModal setIsOpen={setAccessModal} isOpen={accessModal} />
+          <EarlyAccessModal setIsOpen={setAccessModal} isOpen={accessModal} />*/}
         </InnerSiteLayoutStyles>
       </div>
       <Footer />

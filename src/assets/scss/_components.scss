@@ -4,7 +4,7 @@
   border-left-style: solid;
   color: var(--content-widget-text);
 
-  &>div p {
+  & > div p {
     color: var(--content-widget-text);
   }
 
@@ -83,7 +83,7 @@
   }
 }
 
-.introduction+h3 {
+.introduction + h3 {
   padding-top: 0;
 }
 
@@ -132,7 +132,7 @@ header {
   }
 
   .hit-description {
-    &>*:not(p) {
+    & > *:not(p) {
       display: none;
     }
   }
@@ -428,7 +428,6 @@ em.ais-Highlight-highlighted {
   }
 
   .metrics {
-
     td,
     th {
       &:nth-child(4) {
@@ -465,7 +464,7 @@ em.ais-Highlight-highlighted {
   }
 
   .post-content {
-    &>a {
+    & > a {
       word-break: break-all;
     }
   }
@@ -477,7 +476,7 @@ em.ais-Highlight-highlighted {
       flex-wrap: wrap;
       gap: 0.5rem;
 
-      &>* {
+      & > * {
         margin: 0.5rem 0 0 0;
         font-size: 1.125rem;
       }
@@ -500,7 +499,7 @@ em.ais-Highlight-highlighted {
     }
   }
 
-  .maxHeight400>div>div {
+  .maxHeight400 > div > div {
     height: 400px;
     object-position: top;
   }
@@ -582,7 +581,8 @@ em.ais-Highlight-highlighted {
 }
 
 .roadmapCard:hover {
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  box-shadow: 0 0 3px 3px var(--card-roadmap);
 }
 
 .roadmapCardDescription {
@@ -591,4 +591,10 @@ em.ais-Highlight-highlighted {
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
+}
+.rc-tag {
+  &:focus {
+    outline: none !important;
+    border: 1px solid var(--tags-rc-focus-color) !important;
+  }
 }

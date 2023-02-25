@@ -299,11 +299,13 @@ function RoadmapListing() {
         >
           <div className={`flex flex-wrap justify-center`}>
             <div
-              className={`tag text-xs badge ${
+              className={`tag rc-tag text-xs h-[24px] badge ${
                 !selectedTags.length
                   ? "bg-tags-background border-transparent  text-tags-color"
-                  : " border-[var(--tags-color)]"
-              } mb-[4px] mr-[4px] py-[4px] px-[15px] mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background `}
+                  : "border-[var(--tags-rc-color)]"
+              } mb-[4px] mr-[4px] py-[4px] px-[15px] mb-0 cursor-pointer
+                hover:text-primary-hover hover:bg-tags-background  active:bg-[var(--tags-rc-active)] 
+                  !focus:border !focus:border-[var(--tags-rc-focus-color)]`}
               role="none"
               onClick={() => {
                 setSelectedTags([])
@@ -324,8 +326,11 @@ function RoadmapListing() {
                   className={`tag text-xs badge ${
                     selectedTags.includes(tag.codename)
                       ? "bg-tags-background border-transparent  text-tags-color"
-                      : " border-[var(--tags-color)]"
-                  }  mb-[4px] mr-[4px] py-[4px] px-[15px] mb-0 cursor-pointer  hover:text-primary-hover hover:bg-tags-background min-w-[max-content]`}
+                      : " border-[var(--tags-rc-color)]"
+                  }  mb-[4px] h-[24px]  mr-[4px] py-[4px] px-[15px] mb-0 cursor-pointer 
+                  hover:text-primary-hover rc-tag  hover:bg-tags-background min-w-[max-content] 
+                  active:bg-[var(--tags-rc-active)] 
+                  !focus:outline-1 !focus:outline-[var(--tags-rc-focus-color)]`}
                   role="none"
                   onClick={() => {
                     selectedTags.includes(tag.codename)
@@ -417,19 +422,19 @@ function RoadmapListing() {
                   </h3>
                   <div className="grid gap-[16px] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {item.data.map(post => (
-                      <div className="group roadmapCard hover:border-[3px]  border border-[var(--card-roadmap)]">
+                      <div className="group roadmapCard  border border-[var(--card-roadmap)]">
                         <Link
                           to={`/product-roadmap/${post.elements.permalink.value}`}
                         >
                           {console.log(post)}
                           {post?.elements?.image_upload?.value && (
-                            <div className="w-full h-[160px]">
+                            <div className="w-full h-[160px] overflow-hidden">
                               <ImageElement
                                 imgStyle={{ objectFit: `fill` }}
                                 options={{
                                   fit: "clip",
                                 }}
-                                className="cardImg mx-auto w-full h-[160px] group-hover:scale-[1.024] group-hover:opacity-[0.75] "
+                                className="cardImg mx-auto w-full h-[160px] group-hover:scale-[1.024]  group-hover:opacity-[0.75] "
                                 width={
                                   post?.elements?.image_upload?.value?.[0].width
                                     ? post?.elements?.image_upload.value?.[0]
