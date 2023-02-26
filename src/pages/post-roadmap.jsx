@@ -73,15 +73,13 @@ const RoadmapPostTemplate = ({ data }) => {
         <InnerSiteLayoutStyles>
           <div className="maincontent mb-8"></div>
           <div
-            className={
-              "my-8 h-[480px] w-full flex flex-col text-center cursor-pointer"
-            }
+            className={"my-8 w-full flex flex-col text-center cursor-pointer"}
             style={{
               cursor: "pointer",
             }}
             role="none"
           >
-            <div className={" max-h-[480px] w-full overflow-hidden"}>
+            <div className={"w-full overflow-hidden"}>
               <ImageElement
                 // imgStyle={{ height: `480px` }}
                 // className="mx-auto"
