@@ -75,23 +75,19 @@ body.light {
   --attntip-color: #18924a;
   --attninfo-background: #eeeff1;
   --attninfo-color: #5a5f72;
-  --gradient-background: linear-gradient(
-    90deg,
-    #3863e5 0%,
-    #8d46eb 32.16%,
-    #e849b7 65.91%,
-    #fa772e 97.92%
-  );
+  --gradient-background: linear-gradient(90deg,
+      #3863e5 0%,
+      #8d46eb 32.16%,
+      #e849b7 65.91%,
+      #fa772e 97.92%);
   --box-shadow: #dadbe5e0;
   --search-input-background: #eeeff1;
   --search-input-color: #292b33;
   --hr: hsla(0, 0%, 0, 0.2);
   --gradient: linear-gradient(90deg, #f9c1c1 0%, #f9caaf 50.01%, #f3e1af 100%);
-  --card-bg-background: linear-gradient(
-    180deg,
-    rgba(41, 43, 51, 0.35) 0%,
-    rgba(41, 43, 51, 0.7) 100%
-  );
+  --card-bg-background: linear-gradient(180deg,
+      rgba(41, 43, 51, 0.35) 0%,
+      rgba(41, 43, 51, 0.7) 100%);
   --shadow-lp: 0px 1px 8px rgba(0, 0, 0, 0.05),
     inset 0px -1px 0px rgba(167, 172, 190, 0.3);
   --scroll-bg: #e7e8ec;
@@ -173,23 +169,19 @@ body.dark {
   --attntip-color: #3f9f66;
   --attninfo-background: #363944;
   --attninfo-color: #d1d4db;
-  --gradient-background: linear-gradient(
-    90deg,
-    #3863e5 0%,
-    #8d46eb 32.16%,
-    #e849b7 65.91%,
-    #fa772e 97.92%
-  );
+  --gradient-background: linear-gradient(90deg,
+      #3863e5 0%,
+      #8d46eb 32.16%,
+      #e849b7 65.91%,
+      #fa772e 97.92%);
   --box-shadow: #000000d6;
   --search-input-color: #81899c;
   --search-input-background: #24262e;
   --hr: hsla(0, 0%, 100%, 0.2);
   --gradient: linear-gradient(90deg, #113546 0%, #44132e 100%);
-  --card-bg-background: linear-gradient(
-    0deg,
-    rgba(196, 199, 212, 0.7),
-    rgba(196, 199, 212, 0.7)
-  );
+  --card-bg-background: linear-gradient(0deg,
+      rgba(196, 199, 212, 0.7),
+      rgba(196, 199, 212, 0.7));
   --shadow-lp: 0px 1px 8px rgba(0, 0, 0, 0.15), inset 0px -1px 0px #1f1f1f;
   --scroll-bg: #24262e;
   --faq-icon: #429bd7;
