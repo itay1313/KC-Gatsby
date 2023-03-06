@@ -211,7 +211,7 @@ function RoadmapListing() {
   const [tagsToShow, setTagsToShow] = useState(7)
   return (
     <div className="mb-[56px]">
-      <h2 className="mb-[16px]">Feature Description</h2>
+      <h2 className="mb-[16px]">Feature Roadmap</h2>
       <div className="mobile:w-[100%] sm:block md:flex lg:flex lg:justify-between">
         <Select
           value={category}
@@ -422,7 +422,7 @@ function RoadmapListing() {
                   </h3>
                   <div className="grid gap-[16px] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {item.data.map(post => (
-                      <div className="group roadmapCard  border border-[var(--card-roadmap)]">
+                      <div className="group roadmapCard border border-[var(--card-roadmap)]">
                         <Link
                           to={`/product-roadmap/${post.elements.permalink.value}`}
                         >
@@ -430,7 +430,7 @@ function RoadmapListing() {
                           {post?.elements?.image_upload?.value && (
                             <div className="w-full h-[160px] overflow-hidden">
                               <ImageElement
-                                imgStyle={{ objectFit: `fill` }}
+                                imgStyle={{ objectFit: `cover` }}
                                 options={{
                                   fit: "clip",
                                 }}

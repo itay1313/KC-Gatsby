@@ -14,7 +14,7 @@ const Breadcrumbs = ({
 }) => {
   return (
     <nav className="breadcrumbs">
-      <ul className="bread-crumbs flex-wrap text-primary">
+      <ul className="bread-crumbs !whitespace-normal flex-wrap text-primary">
         <li className="breadcrumbs-item m-0 hover:text-primary-hover">
           <Link to="/">Knowledge Center</Link>
         </li>

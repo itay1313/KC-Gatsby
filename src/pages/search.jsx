@@ -146,7 +146,7 @@ const RefinementLisst = ({ items, refine, createURL, currentRefinement }) => {
   const CustomClearRefinements = connectCurrentRefinements(ClearRefinements)
   return (
     <nav className="breadcrumbs" style={{ marginBottom: "var(--space8)" }}>
-      <ul className="bread-crumbs flex-wrap text-primary justify-content-between gap-1">
+      <ul className="bread-crumbs !whitespace-normal flex-wrap text-primary justify-content-between gap-1">
         <li className="flex" style={{ marginBottom: 0 }}>
           <CustomClearRefinements />
         </li>
