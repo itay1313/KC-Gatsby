@@ -5,14 +5,14 @@ import { graphql, Link } from "gatsby"
 import Seo from "../components/Seo"
 import Footer from "../components/Footer"
 import Slash from "../components/widgets/Slash"
-// import LpRichTextElement from "../components/widgets/LpRichTextElement"
+import LpRichTextElement from "../components/widgets/LpRichTextElement"
 import RoadmapListing from "../components/RoadmapListing"
-import HeroImg from "../assets/images/roadmap/hero.png"
+
 const InnerSiteLayoutStyles = styled.main`
   width: 100%;
 `
 
-const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
+const PageRoadmap = ({ data, pageContext }) => {
   console.log(pageContext)
   // // Blog - Release notes template
   // const allReleaseNotesPage = data?.allReleaseNotesPage
@@ -27,9 +27,9 @@ const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
   //     <Article data={article} key={article.elements.permalink.value} />
   //   )
   // })
-  // const elements = data.kontentItemBlogRoadmap?.elements
-  // const body = elements?.body?.value
-  // const footer = elements?.footer?.value
+  const elements = data.kontentItemBlogRoadmap?.elements
+  const body = elements?.body?.value
+  const footer = elements?.footer?.value
 
   return (
     <>
@@ -70,50 +70,24 @@ const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
           </h1>
         </div>
         <InnerSiteLayoutStyles>
-          <div className="mb-[32px]">
-            <div className="w-full mb-[24px]">
-              <img src={HeroImg} alt="roadmap hero" />
+          {body !== "<p><br></p>" && (
+            <div className="pb-8">
+              <LpRichTextElement
+                body_content={body}
+                bodyfield={elements?.body}
+                noImgDesc={true}
+              />
             </div>
-            <p className="mb-[24px]">
-              Welcome to LivePerson's digital product roadmap. &nbsp;Here you
-              can find details about features we have released into the
-              production environment, features we are committed to deliver, and
-              progress on our strategic vision.
-            </p>
-            <h2 className="mb-[16px]">Safe Harbor</h2>
-            <p>
-              The following is intended to outline our general product
-              direction. It is intended for information purposes only, and may
-              not be incorporated into any contract. It is not a commitment to
-              deliver any material, code, or functionality, and should not be
-              relied upon in making purchasing decisions.
-              <br />
-              The development, release, and timing of any features or
-              functionality described for LivePerson’s products remains at the
-              sole discretion of LivePerson and is subject to change.
-            </p>
-          </div>
+          )}
           <RoadmapListing />
-
-          <div>
-            <h2 className="mb-[16px] ">See also</h2>
-            <div className="mb-[16px]">
-              <Link
-                className=" text-[21px] font-semibold leading-[28px]"
-                to="/whats-new/"
-              >
-                What's New
-              </Link>
+          {footer !== "<p><br></p>" && (
+            <div className="pb-8">
+              <LpRichTextElement
+                body_content={footer}
+                bodyfield={elements?.footer}
+              />
             </div>
-            <div className="mb-[32px]">
-              <Link
-                className="text-[21px] font-semibold leading-[28px]"
-                to="/release-notes/"
-              >
-                Release notes
-              </Link>
-            </div>
-          </div>
+          )}
         </InnerSiteLayoutStyles>
       </div>
       <Footer />
@@ -121,12 +95,138 @@ const BlogReleaseNotesTemplate = ({ data, pageContext }) => {
   )
 }
 
-export default BlogReleaseNotesTemplate
+export default PageRoadmap
 
 export const query = graphql`
   query ($systemId: String) {
     kontentItemBlogRoadmap(system: { id: { eq: $systemId } }) {
       elements {
+        body {
+          value
+          modular_content {
+            id
+            system {
+              type
+              codename
+              id
+            }
+            ... on kontent_item_video___widget {
+              id
+              elements {
+                video_id {
+                  value
+                }
+                video_type {
+                  value {
+                    codename
+                  }
+                }
+              }
+              system {
+                codename
+                type
+              }
+            }
+            ... on kontent_item_image__widget {
+              id
+              system {
+                type
+              }
+              elements {
+                description {
+                  value
+                }
+                image {
+                  value {
+                    url
+                    name
+                    description
+                    height
+                    width
+                  }
+                  name
+                }
+                orientation {
+                  value {
+                    codename
+                  }
+                }
+                product {
+                  value {
+                    id
+                    system {
+                      id
+                    }
+                  }
+                }
+              }
+            }
+            ... on kontent_item_code_sample {
+              id
+              system {
+                type
+                codename
+              }
+              elements {
+                code {
+                  value
+                }
+                language {
+                  value {
+                    codename
+                  }
+                }
+              }
+            }
+            ... on kontent_item_contentbox {
+              id
+              system {
+                codename
+                type
+              }
+              elements {
+                notice_text {
+                  value
+                  links {
+                    codename
+                    type
+                    link_id
+                    url_slug
+                  }
+                  modular_content {
+                    id
+                  }
+                }
+                type {
+                  value {
+                    codename
+                  }
+                }
+              }
+            }
+          }
+          images {
+            url
+            image_id
+          }
+          links {
+            url_slug
+            type
+            codename
+            link_id
+          }
+        }
+        footer {
+          value
+          modular_content {
+            id
+            system {
+              type
+              codename
+              id
+            }
+          }
+        }
         pagename {
           value
           name

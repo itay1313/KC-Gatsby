@@ -15,7 +15,7 @@ import FaqWidgetItem from "./Faq/FaqWidgetItem"
 // It's purpose is to provide customized components from the Kentico Kontent project.
 // like the Table component, the TableMC component, the FaqWidgetItem component, the video element, the image__widget, etc.
 
-const LpRichTextElement = ({ body_content, bodyfield }) => {
+const LpRichTextElement = ({ body_content, bodyfield, noImgDesc }) => {
   const [currentImage, setCurrentImage] = useState(0)
   const [lightBoxImages, setLightBoxImages] = useState([])
   let lightBoxImagess = []
@@ -202,9 +202,11 @@ const LpRichTextElement = ({ body_content, bodyfield }) => {
                         image={linkedItem.elements.image.value[0]}
                       />
                     )}
-                    <p className="text-center my-2 opacity-70 italic">
-                      {linkedItem.elements.description.value}
-                    </p>
+                    {noImgDesc !== true && (
+                      <p className="text-center my-2 opacity-70 italic">
+                        {linkedItem.elements.description.value}
+                      </p>
+                    )}
                   </div>
                 )
               } else return null

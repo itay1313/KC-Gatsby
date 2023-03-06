@@ -95,9 +95,9 @@ const RoadmapPostTemplate = ({ data }) => {
               />
             </div>
 
-            <p className="text-center my-2 opacity-70 italic">
+            {/* <p className="text-center my-2 opacity-70 italic">
               {coverImage.description}
-            </p>
+            </p> */}
           </div>
           {body !== "<p><br></p>" && (
             <div className="pb-8">
