@@ -1383,7 +1383,7 @@ const pageQuery = `
 const createObjectIdMap = (nodeSet, type) => {
   return nodeSet.map((x, k) => {
     return {
-      objectID: `${x.id ? x.id : k + 1}`, //${type}_,
+      objectID: `${type}_${x.id ? x.id : k + 1}`.slice(200),
       type: type,
       title: x.elements?.pagename?.value,
       subtitle: x.elements?.subtitle?.value,
