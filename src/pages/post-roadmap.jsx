@@ -107,6 +107,65 @@ const RoadmapPostTemplate = ({ data }) => {
               />
             </div>
           )}
+          <h3 className="smobile:pt-6 pt-12">Feature Description</h3>
+          <div className="flex py-8 gap-4 mobile:flex-col">
+            <div className="md:w-1/2">
+              <img
+                src="https://preview-assets-us-01.kc-usercontent.com/4f67b96c-d078-0081-e1c3-7a8478c0bfb9/66316171-a08d-4c71-bc90-1e0498a800ff/add-chat-to-your-website-1.png"
+                alt=""
+              />
+            </div>
+            <div className="md:w-1/2">
+              <p>
+                The World's Most Innovative Companies is Fast Company's
+                signature franchise and one of its most highly anticipated
+                editorial efforts of the year. It honors businesses making the
+                biggest impact on their industries and culture as a whole,
+                creating the future today with some of the most inspiring
+                accomplishments of the 21st century. This year also marks
+                LivePerson's first time being recognized on Fast Company's
+                overall World's Most Innovative Companies list, coming in as the
+                #21 Most Innovative Company in the world. LivePerson previously
+                earned the #3 spot in the Most Innovative AI Company category in
+                2020.
+              </p>
+            </div>
+          </div>
+          <h3 className="smobile:pt-6">Key benefits</h3>
+          <div className="flex py-8 gap-4 mobile:flex-col">
+            <ol className="roadmap-ol">
+              <li>
+                As a Spotify Email Advisor, I want to have guardrails on when an
+                email is sent out. Many 'actions' are tied to say a Ctrl+Enter
+                as opposed to just Enter which may also be mistaken by a
+                linebreak.
+              </li>
+              <li>
+                As a Spotify Email Advisor, I want to have guardrails on when an
+                email is sent out. Many 'actions' are tied to say a Ctrl+Enter
+                as opposed to just Enter which may also be mistaken by a
+                linebreak.
+              </li>
+              <li>
+                As a Spotify Email Advisor, I want to have guardrails on when an
+                email is sent out. Many 'actions' are tied to say a Ctrl+Enter
+                as opposed to just Enter which may also be mistaken by a
+                linebreak.
+              </li>
+              <li>
+                As a Spotify Email Advisor, I want to have guardrails on when an
+                email is sent out. Many 'actions' are tied to say a Ctrl+Enter
+                as opposed to just Enter which may also be mistaken by a
+                linebreak.
+              </li>
+              <li>
+                As a Spotify Email Advisor, I want to have guardrails on when an
+                email is sent out. Many 'actions' are tied to say a Ctrl+Enter
+                as opposed to just Enter which may also be mistaken by a
+                linebreak.
+              </li>
+            </ol>
+          </div>
           {/* {featureDescription !== "<p><br></p>" && (
             <div className="pb-8">
               <LpRichTextElement
