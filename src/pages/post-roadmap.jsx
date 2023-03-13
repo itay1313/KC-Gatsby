@@ -80,19 +80,23 @@ const RoadmapPostTemplate = ({ data }) => {
             role="none"
           >
             <div className={"w-full overflow-hidden"}>
-              <ImageElement
-                // imgStyle={{ height: `480px` }}
-                // className="mx-auto"
-                // width={coverImage.width ? coverImage.width : 400}
-                // height={480}
-                backgroundColor="#bbbbbb"
-                alt={
-                  coverImage.description
-                    ? coverImage.description
-                    : coverImage.name
-                }
-                image={coverImage}
-              />
+              {coverImage ? (
+                <ImageElement
+                  // imgStyle={{ height: `480px` }}
+                  // className="mx-auto"
+                  // width={coverImage.width ? coverImage.width : 400}
+                  // height={480}
+                  backgroundColor="#bbbbbb"
+                  alt={
+                    coverImage.description
+                      ? coverImage.description
+                      : coverImage.name
+                  }
+                  image={coverImage}
+                />
+              ) : (
+                "USE CAT IMAGE"
+              )}
             </div>
 
             {/* <p className="text-center my-2 opacity-70 italic">

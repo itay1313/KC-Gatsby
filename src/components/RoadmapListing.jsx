@@ -427,7 +427,7 @@ function RoadmapListing() {
                           to={`/product-roadmap/${post.elements.permalink.value}`}
                         >
                           {console.log(post)}
-                          {post?.elements?.image_upload?.value && (
+                          {post?.elements?.image_upload?.value?.length > 0 ? (
                             <div className="w-full h-[160px] overflow-hidden">
                               <ImageElement
                                 imgStyle={{ objectFit: `cover` }}
@@ -458,6 +458,39 @@ function RoadmapListing() {
                                 }
                                 image={post?.elements?.image_upload.value?.[0]}
                               />
+                            </div>
+                          ) : (
+                            <div className="w-full h-[160px] overflow-hidden">
+                              {/* <ImageElement
+                                imgStyle={{ objectFit: `cover` }}
+                                options={{
+                                  fit: "clip",
+                                }}
+                                className="cardImg mx-auto w-full h-[160px] group-hover:scale-[1.024]  group-hover:opacity-[0.75] "
+                                width={
+                                  post?.elements?.image_upload?.value?.[0].width
+                                    ? post?.elements?.image_upload.value?.[0]
+                                        .width
+                                    : 400
+                                }
+                                height={
+                                  post?.elements?.image_upload.value?.[0].height
+                                    ? post?.elements?.image_upload.value?.[0]
+                                        .height
+                                    : 600
+                                }
+                                backgroundColor="#bbbbbb"
+                                alt={
+                                  post?.elements?.image_upload.value?.[0]
+                                    .description
+                                    ? post?.elements?.image_upload.value?.[0]
+                                        .description
+                                    : post?.elements?.image_upload.value?.[0]
+                                        .name
+                                }
+                                image={post?.elements?.image_upload.value?.[0]}
+                              /> */}
+                              Use Category image
                             </div>
                           )}
                           <div className="p-[24px] pb-[0]">
